@@ -1,0 +1,209 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gurpartap.skip_and_buy.Controller.PaymentFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="ITEMS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/subTotal"
+                android:textStyle="normal|bold"
+                android:layout_marginTop="30sp"
+                android:textSize="15dp"
+                android:layout_marginLeft="30sp"/>
+
+            <TextView
+                android:text="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:textStyle="normal|bold"
+                android:layout_marginTop="30sp"
+                android:layout_marginRight="30sp"
+                android:layout_marginEnd="30sp"
+                android:textSize="15dp"
+                android:id="@+id/totalItems" />
+
+            <TextView
+                android:text="SUBTOTAL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/subTotal"
+                android:textStyle="normal|bold"
+                android:layout_marginTop="70sp"
+                android:textSize="15dp"
+                android:layout_marginLeft="30sp"/>
+
+            <TextView
+                android:text="$30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:textStyle="normal|bold"
+                android:layout_marginTop="70sp"
+                android:layout_marginRight="30sp"
+                android:layout_marginEnd="30sp"
+                android:textSize="15dp"
+                android:id="@+id/subTotalNumber" />
+
+            <TextView
+                android:text="TAXES"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/taxesText"
+                android:layout_below="@+id/subTotal"
+                android:textStyle="normal|bold"
+                android:layout_marginTop="20sp"
+                android:textSize="15dp"
+                
+                android:layout_marginLeft="30sp" />
+
+            <TextView
+                android:text="$5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/subTotalNumber"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:textStyle="normal|bold"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="30sp"
+                android:layout_marginEnd="30sp"
+                android:textSize="15dp"
+                
+                android:id="@+id/taxes" />
+
+
+            <TextView
+                android:text="Total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/taxesText"
+                android:textStyle="normal|bold"
+                android:layout_marginTop="80sp"
+                android:layout_marginLeft="30sp"
+
+                android:textSize="20dp"
+                android:textColor="@color/colorAccent"
+                android:id="@+id/totalText" />
+
+            <TextView
+                android:text="$35"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/taxes"
+                android:textStyle="normal|bold"
+                android:layout_marginTop="80sp"
+                android:layout_marginRight="30sp"
+                android:layout_marginEnd="30sp"
+
+                android:textSize="20dp"
+                android:textColor="@color/colorAccent"
+                android:id="@+id/total" />
+
+            <Button
+                android:text="CONFIRM"
+                android:id="@+id/payNowbtn"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_marginTop="70dp"
+                android:layout_marginLeft="200dp"
+                android:layout_marginBottom="40dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/total"
+                android:background="@color/colorAccent"
+                android:textColor="#ffffff"
+                android:textStyle="normal|bold"
+                android:layout_height="40dp" />
+
+            <Button
+                android:text="BACK"
+                android:id="@+id/cancelbtn"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_marginTop="70dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="40dp"
+                android:layout_marginRight="200dp"
+                android:layout_below="@+id/totalText"
+                android:background="@color/colorAccent"
+                android:textColor="#ffffff"
+                android:textStyle="normal|bold"
+                android:layout_height="40dp"
+                android:onClick="viewCartActivity"/>
+
+            <TextView
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_below="@+id/taxesText"
+                android:layout_marginTop="70dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="-30dp"
+                android:background="@color/colorAccent"
+                android:id="@+id/textView3"
+                android:layout_alignLeft="@+id/cancelbtn"
+                android:layout_alignStart="@+id/cancelbtn"
+                android:layout_toLeftOf="@+id/subTotalNumber"
+                android:layout_toStartOf="@+id/subTotalNumber" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Coupon Code"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:ems="10"
+                android:id="@+id/editText2"
+                android:layout_below="@+id/taxesText"
+                android:layout_alignLeft="@+id/cancelbtn"
+                android:layout_alignStart="@+id/cancelbtn" />
+
+            <Button
+                android:text="Apply"
+                android:layout_width="wrap_content"
+                android:layout_alignTop="@+id/editText2"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:background="@color/colorAccent"
+                android:textColor="#ffffff"
+                android:textStyle="normal|bold"
+                android:layout_height="35dp"
+
+                android:layout_marginRight="30dp"
+                android:id="@+id/button8" />
+
+            <TextView
+                android:text='* By clicking "Confirm", you agree to Skip and Buy Payments User Agreement and Privacy Notice. '
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignLeft="@+id/totalText"
+                android:layout_alignStart="@+id/totalText"
+                android:id="@+id/textView4"
+                android:layout_alignRight="@+id/payNowbtn"
+                android:layout_alignEnd="@+id/payNowbtn" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

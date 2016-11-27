@@ -1,0 +1,47 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Controller.ProductNotFound">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/sad"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:id="@+id/imageView15" />
+
+        <TextView
+            android:text="Unable to locate product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:textSize="22dp"
+            android:id="@+id/textView11"
+            android:textAlignment="center" />
+
+        <Button
+            android:text="Scan Again"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:background="@color/colorAccent"
+            android:id="@+id/scanProductAgain"
+            android:onClick="scanProductAgain"/>
+
+    </LinearLayout>
+</FrameLayout>

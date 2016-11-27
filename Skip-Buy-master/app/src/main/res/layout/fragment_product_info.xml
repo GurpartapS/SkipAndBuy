@@ -1,0 +1,274 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.gurpartap.skip_and_buy.Controller.ProductInfoFragment">
+
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="220dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                custom:srcCompat="@drawable/excelchew"
+                android:id="@+id/imageView7"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:layout_height="180dp" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:text="RITZ CRACKERS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/productName"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@android:color/darker_gray"
+                    android:textStyle="normal|bold"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:textAlignment="textStart"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:text="200g"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:id="@+id/productWeight"
+                    android:layout_weight="1"
+                    android:textSize="14dp"
+                    android:layout_height="25dp" />
+
+                <TextView
+                    android:text="$20 / Pc."
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/productPrice"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:textSize="16dp"
+                    android:textStyle="normal|bold"
+                    android:textColor="@android:color/darker_gray"
+                    android:textAlignment="textStart" />
+
+                <RatingBar
+                    android:layout_height="30dp"
+                    android:id="@+id/ratingBar2"
+                    android:numStars="5"
+                    android:rating="4"
+                    android:stepSize="1"
+                    android:foregroundTint="@color/colorAccent"
+                    android:progressTint="@color/colorAccent"
+                    android:progressBackgroundTint="#D3D3D3"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="0dp"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="left"
+                    android:paddingTop="5dp" />
+
+                <TextView
+                    android:text="30 Reviews"
+                    android:layout_width="match_parent"
+                    android:id="@+id/productReviews"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_weight="1"
+                    android:layout_height="20dp" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1">
+                    <EditText
+                        android:layout_width="0dp"
+                        android:inputType="number"
+                        android:ems="10"
+                        android:id="@+id/productQuantity"
+                        android:layout_weight="0.38"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginRight="0dp"
+                        tools:text="1"
+                        android:layout_height="40dp"
+
+                        android:text="1"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:text="Qty."
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView222"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp">
+
+            <Button
+                android:text="SCAN ANOTHER"
+                android:layout_width="match_parent"
+                android:id="@+id/scanAnotherItemButton"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="40dp"
+                android:background="@color/colorAccent"
+                android:textColor="#ffffff"
+                android:textStyle="normal|bold"
+                android:onClick="scanItemActivity"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_height="30dp"
+                />
+
+            <Button
+                android:text="ADD TO CART"
+                android:id="@+id/addItemToCartButton"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="40dp"
+                android:background="@color/colorAccent"
+                android:onClick="viewCartActivity"
+                android:textColor="#ffffff"
+                android:textStyle="normal|bold"
+                android:layout_height="30dp" />
+        </LinearLayout>
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:id="@+id/textView9"
+            android:background="#d3d3d3"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="0.5dp" />
+
+
+        <TextView
+            android:text="Description &amp; Features"
+            android:layout_width="match_parent"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:textColor="#000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView16" />
+
+        <TextView
+            android:text="Happiness right out of the box. Enjoy the rich, flaky, melt in your mouth taste of RITZ in a variety of delicious flavours."
+            android:layout_width="match_parent"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:textColor="#808080"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/productDescription" />
+
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:id="@+id/textView10"
+            android:background="#d3d3d3"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="0.5dp" />
+        <TextView
+            android:text="Specifications"
+            android:layout_width="match_parent"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:textColor="#000000"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView18" />
+
+        <TextView
+            android:text="Brand:  Excel"
+            android:layout_width="match_parent"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:textColor="#808080"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/productBrand" />
+
+        <TextView
+            android:text="Weight:  200g"
+            android:layout_width="match_parent"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:textColor="#808080"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/productWeightSpec" />
+
+        <TextView
+            android:text="UPC:  804848384"
+            android:layout_width="match_parent"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:textColor="#808080"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/productUPCSpec" />
+
+        <TextView
+            android:text="SKU:  48483943"
+            android:layout_width="match_parent"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:textColor="#808080"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/productSKUSpec" />
+
+    </LinearLayout>
+</FrameLayout>

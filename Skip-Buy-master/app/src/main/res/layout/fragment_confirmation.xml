@@ -1,0 +1,168 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gurpartap.skip_and_buy.Controller.PaymentFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Payment Amount : "
+                    android:id="@+id/payment"
+                    android:textStyle="normal|bold"
+                    android:layout_marginTop="30sp"
+                    android:textSize="16dp"
+                    
+                    android:layout_marginLeft="30sp" />
+
+                <TextView
+                    android:id="@+id/paymentAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="$67.8"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:textStyle="normal|bold"
+                    android:layout_marginTop="30sp"
+                    android:textSize="16dp"
+                    
+                    android:layout_marginRight="30sp"
+                    android:layout_marginEnd="30sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Payment Status : "
+                    android:id="@+id/status"
+                    android:layout_below="@id/payment"
+                    android:textStyle="normal|bold"
+                    android:textSize="16dp"
+                    
+                    android:layout_marginTop="30sp"
+                    android:layout_marginLeft="30sp" />
+
+                <TextView
+                    android:id="@+id/paymentStatus"
+                    android:layout_below="@id/paymentAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:textStyle="normal|bold"
+                    android:text="Complete"
+                    android:textSize="16dp"
+                    
+                    android:layout_marginTop="30sp"
+                    android:layout_marginRight="30sp"
+                    android:layout_marginEnd="30sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Payment Time : "
+                    android:id="@+id/time"
+                    android:layout_below="@id/status"
+                    android:textStyle="normal|bold"
+                    android:layout_marginTop="30sp"
+                    android:textSize="16dp"
+                    
+                    android:layout_marginLeft="30sp" />
+
+                <TextView
+                    android:id="@+id/paymentTime"
+                    android:layout_below="@id/paymentStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="16dp"
+                    
+                    android:text="10:45 Am 10/19/2016"
+                    android:textStyle="normal|bold"
+                    android:layout_marginTop="30sp"
+                    android:layout_marginRight="30sp"
+                    android:layout_marginEnd="30sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order #"
+                android:id="@+id/orderNumber"
+                android:layout_below="@id/status"
+                android:textStyle="normal|bold"
+                android:layout_marginTop="80sp"
+                android:textSize="16dp"
+                
+                android:layout_marginLeft="30sp" />
+
+            <TextView
+                android:id="@+id/orderNumberText"
+                android:layout_below="@id/paymentStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:textSize="16dp"
+                
+                android:text="123456"
+                android:textStyle="normal|bold"
+                android:layout_marginTop="80sp"
+                android:layout_marginRight="30sp"
+                android:layout_marginEnd="30sp" />
+
+            <Button
+                    android:text="DONE"
+                    android:id="@+id/okBtn"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="320dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginBottom="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_below="@id/paymentTime"
+                    android:background="@color/colorAccent"
+                    android:textColor="#ffffff"
+                    android:textStyle="normal|bold"
+                    android:layout_height="40dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                app:srcCompat="@mipmap/shoppingcart"
+                android:id="@+id/qrCode"
+                android:layout_below="@+id/time"
+                android:layout_alignLeft="@+id/time"
+                android:layout_alignStart="@+id/time"
+                android:layout_marginTop="60dp"
+                android:layout_alignRight="@+id/paymentTime"
+                android:layout_alignEnd="@+id/paymentTime" />
+
+            <TextView
+                android:text="* Please show the barcode to an agent for cross verification at the door."
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/qrCode"
+                android:layout_alignLeft="@+id/okBtn"
+                android:layout_alignStart="@+id/okBtn"
+                android:layout_marginTop="16dp"
+                android:id="@+id/textView5"
+                android:layout_alignRight="@+id/qrCode"
+                android:layout_alignEnd="@+id/qrCode" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
+

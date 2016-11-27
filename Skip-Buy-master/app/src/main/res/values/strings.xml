@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name"><![CDATA[Skip & Buy]]></string>
+    <string name="facebook_app_id">XXXXXX</string>
+    <string name="already_membet_sign_in">Already Membet/Sign In</string>
+    <string name="title_activity_main">Skip &amp; Buy</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+
+    <string name="Complete">Done</string>
+    <string name="Error">Error</string>
+    <string name="Upload">Uploded</string>
+
+    <string-array name="Cards">
+        <item>MasterCard</item>
+        <item>VISA</item>
+        <item>American Express</item>
+    </string-array>
+    <string name="title_activity_add_new_payment_method">Add Payment Method</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_add_new_paymentt">AddNewPaymentt</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+
+</resources>

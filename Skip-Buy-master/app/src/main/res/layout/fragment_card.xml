@@ -1,0 +1,61 @@
+ <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gurpartap.skip_and_buy.Controller.ShoppingCartFragment">
+
+     <LinearLayout
+         android:orientation="vertical"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:weightSum="1">
+
+         <ListView
+            android:layout_width="match_parent"
+            android:id="@android:id/list"
+            android:layout_gravity="left|top"
+             android:focusableInTouchMode="false"
+            android:layout_marginTop="5dp"
+             android:layout_height="500dp" />
+
+         <LinearLayout
+             android:orientation="horizontal"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="2dp">
+
+             <Button
+                 android:text="SCAN ANOTHER"
+                 android:layout_width="match_parent"
+                 android:id="@+id/button5"
+                 android:layout_marginTop="0dp"
+                 android:layout_marginLeft="20dp"
+                 android:layout_marginBottom="0dp"
+                 android:background="@color/colorAccent"
+                 android:textColor="#ffffff"
+                 android:textStyle="normal|bold"
+                 android:onClick="scanItemActivity"
+                 android:layout_weight="1"
+                 android:layout_marginRight="20dp"
+                 android:layout_height="40dp"
+                 />
+
+             <Button
+                 android:text="CHECKOUT"
+                 android:id="@+id/checkout"
+                 android:layout_weight="1"
+                 android:layout_width="match_parent"
+                 android:layout_marginTop="0dp"
+                 android:layout_marginLeft="0dp"
+                 android:layout_marginBottom="0dp"
+                 android:layout_marginRight="20dp"
+                 android:background="@color/colorAccent"
+                 android:textColor="#ffffff"
+                 android:textStyle="normal|bold"
+                 android:onClick="paymentFragment"
+                 android:layout_height="40dp"/>
+         </LinearLayout>
+     </LinearLayout>
+
+ </FrameLayout>

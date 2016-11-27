@@ -1,0 +1,132 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gurpartap.skip_and_buy.Controller.ShopFragment">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top|center">
+
+       <!-- <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:id="@+id/imageView5"
+            android:src="@drawable/shoppingcart"
+            android:background="#0972f4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="PUNJABI BAZAR"
+            android:id="@+id/storeNameTitle"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:textColor="#0972f4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="1325 Eglinton Ave. E"
+            android:id="@+id/address1TextView"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Mississauga, ON"
+            android:id="@+id/address2TextView"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="L6Y3J1"
+            android:id="@+id/addess3TextView"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:layout_marginTop="10dp" />
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/storeRatingBar"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:numStars="4"
+            android:rating="3"
+            android:stepSize="1"
+            android:backgroundTint="#ff0000"
+            android:foregroundTint="#ff0000"
+            android:progressTint="#ff0000"
+            android:progressBackgroundTint="#f2f2f2" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:text="SHOP NOW"
+                    android:id="@+id/shopButton"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20dp"
+                    android:background="#0972f4"
+                    android:textColor="#ffffff"
+                    android:onClick="scanItemActivity"/>
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:text="VIEW FLYER"
+                    android:id="@+id/viewFlyerButton"
+                    android:layout_column="23"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="70dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="20dp"
+                    android:textColor="#ffffff"
+                    android:background="#0972f4"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp" />
+            </TableRow>
+
+        </TableLayout>
+-->
+        <com.skyfishjy.library.RippleBackground
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/content"
+            app:rb_color="@color/colorPrimary"
+            app:rb_radius="32dp"
+            app:rb_rippleAmount="4"
+            app:rb_duration="3000"
+            app:rb_scale="6">
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_centerInParent="true"
+                android:id="@+id/centerImage"
+                android:src="@drawable/shoppingcart"/>
+        </com.skyfishjy.library.RippleBackground>
+    </LinearLayout>
+</FrameLayout>

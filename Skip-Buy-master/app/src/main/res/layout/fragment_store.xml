@@ -1,0 +1,180 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.gurpartap.skip_and_buy.Controller.StoreFragment"
+    android:background="#ffffff">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            app:srcCompat="@drawable/walmarts"
+            android:id="@+id/storeImage"
+            android:layout_height="240dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                app:srcCompat="@drawable/store"
+                android:id="@+id/imageView5"
+                android:layout_weight="1"
+                android:layout_height="70dp"
+                android:layout_marginLeft="18dp"
+                android:layout_width="60dp" />
+
+            <TextView
+                android:text="Walmart Canada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/storeTitle"
+                android:textAlignment="textStart"
+                android:paddingTop="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:paddingLeft="14dp"
+                android:layout_marginLeft="0dp"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="55dp">
+
+            <ImageView
+                app:srcCompat="@drawable/product"
+                android:id="@+id/imageView8"
+                android:layout_weight="1"
+                android:layout_marginLeft="18dp"
+                android:layout_height="50dp"
+                android:layout_width="60dp" />
+
+            <TextView
+                android:text="Grocery, dairy and household"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/storeDescription"
+                android:textAlignment="textStart"
+                android:paddingTop="4dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="14dp"
+                android:textStyle="normal|italic"
+                android:layout_weight="1"
+                android:paddingLeft="0dp"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="55dp">
+
+            <ImageView
+                app:srcCompat="@drawable/location"
+                android:id="@+id/imageView9"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_height="40dp"
+                android:layout_width="60dp" />
+
+            <TextView
+                android:text="45 Trailside Walk, Brampton, ON"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/address"
+                android:textAlignment="textStart"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:paddingLeft="13dp"
+                android:paddingTop="0dp"
+                android:textSize="18sp"
+                android:textStyle="normal|italic" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <ImageView
+                app:srcCompat="@drawable/edit"
+                android:id="@+id/imageView10"
+                android:layout_weight="1"
+                android:layout_marginLeft="-88dp"
+                android:layout_width="0dp"
+                android:layout_height="25dp" />
+
+            <RatingBar
+                android:layout_height="wrap_content"
+                android:id="@+id/ratingBar2"
+                android:numStars="5"
+                android:rating="4"
+                android:stepSize="1"
+                android:foregroundTint="@color/colorAccent"
+                android:progressTint="@color/colorAccent"
+                android:progressBackgroundTint="#D3D3D3"
+                android:layout_marginTop="0dp"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_weight="0.2"
+                android:layout_width="20dp"
+                android:layout_gravity="left"
+                android:layout_marginLeft="-102dp"
+                android:paddingTop="5dp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp">
+
+            <Button
+                android:text="SHOP NOW"
+                android:layout_width="match_parent"
+                android:id="@+id/shopNowButton"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:background="@color/colorAccent"
+                android:textColor="#ffffff"
+                android:textStyle="normal|bold"
+                android:onClick="scanItemActivity"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_height="40dp" />
+
+            <Button
+                android:text="VIEW FLYER"
+                android:id="@+id/viewFlyerButton"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="20dp"
+                android:onClick="viewStoreFlyer"
+                android:background="@color/colorAccent"
+                android:textColor="#ffffff"
+                android:textStyle="normal|bold"
+                android:layout_height="40dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.gurpartap.skip_and_buy.Controller.LoginActivity"
+    android:background="@color/colorAccent"
+    android:id="@+id/loginScreen">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/scrollView"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:scrollbarStyle="insideOverlay"
+                android:scrollbars="none"
+                >
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:weightSum="1"
+                    android:id="@+id/scrollView"
+                    android:scrollIndicators="none">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/imageView2"
+                        android:layout_gravity="center"
+                        android:src="@drawable/shoppingcart"
+                        android:layout_marginTop="60dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="Skip &amp; Buy"
+                        android:id="@+id/textView6"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:textSize="40dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center" />
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:inputType="textEmailAddress"
+                        android:ems="10"
+                        android:id="@+id/emailTextField"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/editTextField"
+                        android:hint="Email"
+                        android:textCursorDrawable="@null"
+                        android:textColorHint="@color/editTextField"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:textSize="18dp" />
+
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:inputType="textPassword"
+                        android:ems="10"
+                        android:id="@+id/passwordTextField"
+                        android:layout_marginTop="30dp"
+                        android:textColor="@color/editTextField"
+                        android:hint="Password"
+                        android:textSize="20dp"
+                        android:textCursorDrawable="@null"
+                        android:textColorHint="@color/editTextField"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="20dp" />
+
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:text="LOGIN"
+                        android:id="@+id/loginButton"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/colorAccent"
+                        android:background="#ffffff"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_height="35dp"
+                        android:textSize="20dp" />
+
+                    <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Not a member/Sign Up"
+                        android:id="@+id/signupButton"
+                        android:layout_alignBottom="@+id/scrollView"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:background="@null"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold|italic"
+                        android:onClick="signUpActivity"/>
+
+                    <TextView
+                        android:text="OR"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView2"
+                        android:layout_marginTop="10dp"
+                        android:textAlignment="center"
+                        android:textStyle="normal|bold"
+                        tools:text="OR"
+                        android:textColor="#ffffff" />
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:text="SIGN UP WITH FACEBOOK"
+                        android:id="@+id/loginButton"
+                        android:layout_marginTop="15dp"
+                        android:textColor="#ffffff"
+                        android:background="#3b5998"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_height="40dp"
+                        android:textSize="16sp" />
+
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:text="SIGN UP WITH GOOGLE"
+                        android:id="@+id/loginButton"
+                        android:layout_marginTop="15dp"
+                        android:textColor="#ffffff"
+                        android:background="#dd4b39"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_height="40dp"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+            </ScrollView>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

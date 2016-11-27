@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:weightSum="1"
+    android:paddingTop="5dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="5dp"
+    android:layout_height="100dp">
+
+    <ImageView
+        android:id="@+id/iconView"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/ritz"
+        android:layout_marginBottom="5dp"
+
+
+        android:layout_marginTop="0dp"
+        android:layout_height="80dp"
+        android:layout_width="110dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+
+        android:layout_marginRight="50dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ritz Crackers"
+            android:id="@+id/iconTitle"
+            android:layout_marginLeft="0dp"
+            android:textSize="18sp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="0dp"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="200g"
+            android:id="@+id/iconWeight"
+            android:layout_marginLeft="0dp"
+            android:textSize="14sp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="0dp"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:layout_width="40dp"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/editText"
+                android:layout_weight="1"
+                android:layout_gravity="left"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_height="40dp"
+
+                android:text="1"
+                android:textSize="14sp" />
+
+            <TextView
+                android:text="Qty."
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView22"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="$20"
+            android:id="@+id/iconPrice"
+            android:layout_marginLeft="0dp"
+            android:textSize="18sp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="0dp"
+
+            android:gravity="center"
+            android:textColor="#000000" />
+        <Button
+            android:text="Remove"
+            android:id="@+id/removeButton"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/colorAccent"
+            android:textColor="#ffffff"
+            android:textStyle="normal|bold"
+            android:layout_height="30dp"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>
