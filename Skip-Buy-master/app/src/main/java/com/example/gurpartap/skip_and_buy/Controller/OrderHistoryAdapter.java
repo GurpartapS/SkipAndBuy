@@ -13,9 +13,12 @@ import android.widget.TextView;
 import com.example.gurpartap.skip_and_buy.Model.OrderHistoryItem;
 import com.example.gurpartap.skip_and_buy.R;
 
-/**
- * Created by GURPARTAP on 2016-09-16.
- */
+
+/*
+    * OrderHistoryAdapter is for plugging in the order history
+    * items in the OrderHistoryFragment ListView
+*/
+
 public class OrderHistoryAdapter extends ArrayAdapter<OrderHistoryItem> {
 
     Context context;

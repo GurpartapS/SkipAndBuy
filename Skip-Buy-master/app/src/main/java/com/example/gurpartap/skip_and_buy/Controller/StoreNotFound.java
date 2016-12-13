@@ -8,6 +8,11 @@ import android.view.ViewGroup;
 
 import com.example.gurpartap.skip_and_buy.R;
 
+/*
+    * This is store not found fragment which gets called
+    * if the app is not able to locate the store
+*/
+
 public class StoreNotFound extends Fragment {
 
     @Override

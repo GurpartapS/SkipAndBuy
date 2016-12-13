@@ -7,6 +7,11 @@ import android.view.Window;
 
 import com.example.gurpartap.skip_and_buy.R;
 
+/*
+    *   SplashActivity screen has the app logo
+    *   SplashActivity gets called when app gets initialized
+*/
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override

@@ -7,6 +7,11 @@ import android.os.Bundle;
 
 import com.example.gurpartap.skip_and_buy.R;
 
+/*
+    *   PaymentActivity redirects the user to the paypal payment screen
+    *   PaymentActivity gets called once user wants to checkout from the Shopping Cart
+*/
+
 public class PaymentActivity extends AppCompatActivity {
 
     @Override

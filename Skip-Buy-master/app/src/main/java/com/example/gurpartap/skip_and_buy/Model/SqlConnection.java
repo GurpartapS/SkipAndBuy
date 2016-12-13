@@ -1,58 +1,77 @@
 package com.example.gurpartap.skip_and_buy.Model;
 
-// Use the JDBC driver
 import java.sql.*;
+
+/*
+ ** SqlConnection class is used throughout the project to make
+ ** connections to the SQL server for DML & DDL operations
+*/
 
 public class SqlConnection {
 
+    private String connectionString = null;
+    private String userName = null;
+    private String password = null;
+    private String className = null;
 
     public SqlConnection() {
+        connectionString = "jdbc:jtds:sqlserver://teaminnovation.database.windows.net/SkipAndBuy";
+        userName = "innovation";
+        password = "skip&buy2016";
+        className = "net.sourceforge.jtds.jdbc.Driver";
     }
 
-    // Connect to your database.
-    // Replace server name, username, and password with your credentials
-    public  Connection connect() {
-        String connectionString =
-                "jdbc:jtds:sqlserver://teaminnovation.database.windows.net/SkipAndBuy:1433;"
-                        + "database=SkipAndBuy;"
-                        + "user=innovation@teaminnovation;"
-                        + "password=skip&buy2016;"
-                        + "encrypt=true;"
-                        + "trustServerCertificate=false;"
-                        + "hostNameInCertificate=*.database.windows.net;"
-                        + "loginTimeout=30;";
+    public SqlConnection(String connectionString, String userName, String password, String className) {
+        this.connectionString = connectionString;
+        this.userName = userName;
+        this.password = password;
+        this.className = className;
+    }
 
-        // Declare the JDBC objects.
+    public String getConnectionString() {
+        return connectionString;
+    }
+
+    public void setConnectionString(String connectionString) {
+        this.connectionString = connectionString;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public Connection connect() {
+
         Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
 
         try {
+            Class.forName(className);
+            connection = DriverManager.getConnection(connectionString, userName, password);
+        } catch (Exception e) {
+            connection = null;
+            System.out.println("Exception occured in SqlConnection connect() method as " + e.getMessage());
+        }
 
-            Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:jtds:sqlserver://teaminnovation.database.windows.net/SkipAndBuy","innovation","skip&buy2016");
-            System.out.println("GOING FOR SELECT STATMENT");
-            // Create and execute a SELECT SQL statement.
-            /*String selectSql = "SELECT * from dbo.products";
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(selectSql);
-            System.out.println("DONE WITH QUERY");
-            // Print results from select statement
-            while (resultSet.next())
-            {
-                System.out.println("THIS IS RESULT SET");
-                System.out.println(resultSet.getString(1));
-            }*/
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        /*finally {
-            // Close the connections after the data has been handled.
-            if (resultSet != null) try { resultSet.close(); } catch(Exception e) {}
-            if (statement != null) try { statement.close(); } catch(Exception e) {}
-            if (connection != null) try { connection.close(); } catch(Exception e) {}
-        }*/
         return connection;
     }
 }

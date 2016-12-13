@@ -4,10 +4,15 @@ package com.example.gurpartap.skip_and_buy.Model;
  * Created by OWNER on 10/7/2016.
  */
 
+/*
+    *   This model class is used to login to the application
+    *   It stores user's email and password
+*/
+
 public class UserAccount {
 
     public static String email;
-    private  String password;
+    private String password;
 
     public UserAccount() {
     }

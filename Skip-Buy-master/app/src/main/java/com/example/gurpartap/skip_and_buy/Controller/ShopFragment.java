@@ -13,6 +13,11 @@ import com.example.gurpartap.skip_and_buy.R;
 import com.skyfishjy.library.RippleBackground;
 
 
+/*
+    * This controller is for shop screen
+    * It has few animations too
+*/
+
 public class ShopFragment extends Fragment {
 
     private ProgressDialog progressBar;

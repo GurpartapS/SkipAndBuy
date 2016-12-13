@@ -33,6 +33,15 @@ import java.util.List;
 import static android.graphics.Color.BLACK;
 import static android.graphics.Color.WHITE;
 
+
+/*
+* This fragment is used while generating receipt
+* It has all the confirmation details like
+* payment amount, status, date and time, etc.
+* When the button in this fragment is pressed
+* the order is moved to history tab.
+* */
+
 public class ConfirmationFragment extends Fragment {
 
     public ConfirmationFragment() {

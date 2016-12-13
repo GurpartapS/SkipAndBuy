@@ -33,11 +33,15 @@ import com.example.gurpartap.skip_and_buy.R;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 
+
+/*
+    * This activity class is used when user logs in to the application
+    * It establishes connection to database and validates user's credentials
+*/
+
 public class LoginActivity extends AppCompatActivity {
     EditText emailText;
     EditText passwordText;
-    //TextView loadingBackScreen;
-    //ImageView loadingImage;
     Button loginButton;
     SqlConnection conn;
     Connection connect;
@@ -67,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                 .playOn(findViewById(R.id.textView6));
 
         setupUI(findViewById(R.id.loginScreen));
-        Window window=this.getWindow();
+        Window window = this.getWindow();
         window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimary));
         emailText = (EditText) findViewById(R.id.emailTextField);
         passwordText = (EditText) findViewById(R.id.passwordTextField);
@@ -119,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     public void onClick(View view) {
 
-                        final View spinnerView=view;
+                        final View spinnerView = view;
                         new CountDownTimer(1000, 1000) {
                             @Override
                             public void onTick(long millisUntilFinished) {
@@ -142,93 +146,91 @@ public class LoginActivity extends AppCompatActivity {
     private class AsyncTaskRunner extends AsyncTask<String, String, String> {
 
         private String resp;
+
         public AsyncTaskRunner(View view) {
 
-                if (emailText.getText().toString().equals("") || passwordText.getText().toString().equals("")) {
+            if (emailText.getText().toString().equals("") || passwordText.getText().toString().equals("")) {
 
-                    Snackbar.make(view, "PLEASE ENTER DETAILS", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "PLEASE ENTER DETAILS", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+
+                if (passwordText.getText().toString().equals("")) {
+
+                    passwordText.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
+
+                    passwordText.setTextColor(Color.RED);
+                    passwordText.requestFocus();
+                }
+                if (emailText.getText().toString().equals("")) {
+
+                    emailText.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
+
+                    emailText.setTextColor(Color.RED);
+
+                    emailText.requestFocus();
+                }
+            } else {
+                String EMAIL_REGEX = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+                Boolean emailValidation = emailText.getText().toString().matches(EMAIL_REGEX);
+                if (emailValidation == false) {
+                    Snackbar.make(view, "INVALID EMAIL", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
+                    emailText.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
 
-                    if (passwordText.getText().toString().equals("")) {
+                    emailText.setTextColor(Color.RED);
+                    emailText.requestFocus();
 
-                        passwordText.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
-
-                        passwordText.setTextColor(Color.RED);
-                        passwordText.requestFocus();
-                    }
-                    if (emailText.getText().toString().equals("")) {
-
-                        emailText.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
-
-                        emailText.setTextColor(Color.RED);
-
-                        emailText.requestFocus();
-                    }
                 } else {
-                    String EMAIL_REGEX = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
-                    Boolean emailValidation = emailText.getText().toString().matches(EMAIL_REGEX);
-                    if (emailValidation == false) {
-                        Snackbar.make(view, "INVALID EMAIL", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
-                        emailText.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
+                    UserAccount currentUser = new UserAccount(emailText.getText().toString(), passwordText.getText().toString());
 
-                        emailText.setTextColor(Color.RED);
-                        emailText.requestFocus();
+                    emailText.setTextColor(Color.WHITE);
+                    emailText.getBackground().setColorFilter(getResources().getColor(R.color.editTextField), PorterDuff.Mode.SRC_ATOP);
+                    passwordText.setTextColor(Color.WHITE);
+                    passwordText.getBackground().setColorFilter(getResources().getColor(R.color.editTextField), PorterDuff.Mode.SRC_ATOP);
 
-                    } else {
-                            UserAccount currentUser=new UserAccount(emailText.getText().toString(),passwordText.getText().toString());
+                    try {
+                        conn = new SqlConnection();
+                        connect = conn.connect();
 
-                            emailText.setTextColor(Color.WHITE);
-                            emailText.getBackground().setColorFilter(getResources().getColor(R.color.editTextField), PorterDuff.Mode.SRC_ATOP);
-                            passwordText.setTextColor(Color.WHITE);
-                            passwordText.getBackground().setColorFilter(getResources().getColor(R.color.editTextField), PorterDuff.Mode.SRC_ATOP);
-
-                            try {
-                                conn=new SqlConnection();
-                                connect=conn.connect();
-
-                                PreparedStatement statement = connect.prepareStatement("Select * from dbo.agent where " +
-                                        "agentEmail=? and agentPassword=?");
+                        PreparedStatement statement = connect.prepareStatement("Select * from dbo.agent where " +
+                                "agentEmail=? and agentPassword=?");
 
 
-                                statement.setString(1,currentUser.getEmail());
-                                statement.setString(2,currentUser.getPassword());
+                        statement.setString(1, currentUser.getEmail());
+                        statement.setString(2, currentUser.getPassword());
 
-                                ResultSet resultSet = statement.executeQuery();
+                        ResultSet resultSet = statement.executeQuery();
 
-                                if(!resultSet.next()){
+                        if (!resultSet.next()) {
 
-                                    Snackbar.make(view, "Invalid Details", Snackbar.LENGTH_LONG)
-                                            .setAction("Action", null).show();
-                                    emailText.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
-
-                                    emailText.setTextColor(Color.RED);
-                                    passwordText.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
-
-                                    passwordText.setTextColor(Color.RED);
-
-                                }
-                                else {
-                                    UserAccount.email=currentUser.getEmail();
-                                    Snackbar.make(view, "Login Successful", Snackbar.LENGTH_LONG)
-                                            .setAction("Action", null).show();
-                                    Intent intent=new Intent(LoginActivity.this, MainActivity.class);
-                                    startActivity(intent);
-                                }
-
-                            }
-                             catch (Exception e){
-                            Snackbar.make(view, "ERROR "+e.getMessage(), Snackbar.LENGTH_LONG)
+                            Snackbar.make(view, "Invalid Details", Snackbar.LENGTH_LONG)
                                     .setAction("Action", null).show();
+                            emailText.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
+
+                            emailText.setTextColor(Color.RED);
+                            passwordText.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
+
+                            passwordText.setTextColor(Color.RED);
+
+                        } else {
+                            UserAccount.email = currentUser.getEmail();
+                            Snackbar.make(view, "Login Successful", Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
                         }
 
+                    } catch (Exception e) {
+                        Snackbar.make(view, "ERROR " + e.getMessage(), Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show();
                     }
+
                 }
+            }
         }
 
         @Override
         protected String doInBackground(String... params) {
-
 
 
             return null;
@@ -253,13 +255,14 @@ public class LoginActivity extends AppCompatActivity {
 
         }
     }
-    public static void hideSoftKeyboard(Activity activity){
-        InputMethodManager inputMethodManager=(InputMethodManager)activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(),0);
+
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
     }
 
-    public void setupUI(View view){
-        if(!(view instanceof EditText)){
+    public void setupUI(View view) {
+        if (!(view instanceof EditText)) {
             view.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
@@ -269,16 +272,16 @@ public class LoginActivity extends AppCompatActivity {
             });
         }
 
-        if(view instanceof ViewGroup){
-            for(int i=0;i<((ViewGroup)view).getChildCount();i++){
-                View innerView=((ViewGroup)view).getChildAt(i);
+        if (view instanceof ViewGroup) {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+                View innerView = ((ViewGroup) view).getChildAt(i);
                 setupUI(innerView);
             }
         }
     }
 
-    public void signUpActivity(View view){
-        Intent intent=new Intent(this, SignUpActivity.class);
+    public void signUpActivity(View view) {
+        Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
 }

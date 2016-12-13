@@ -1,4 +1,4 @@
-package layout;
+package com.example.gurpartap.skip_and_buy.Controller;
 
 import android.content.Context;
 import android.net.Uri;
@@ -15,6 +15,10 @@ import android.view.ViewGroup;
 
 import com.example.gurpartap.skip_and_buy.R;
 
+/*
+    * SearchProduct allows user to search a product
+    * Search Product does not have the complete functionality implemented except the interface
+*/
 
 public class search_product extends Fragment {
 

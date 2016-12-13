@@ -29,6 +29,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/*
+    *   PaymentFragment is replaced in the main activity fragment view once user checks out from the shopping cart
+    *   This view summarises the user order by giving information about the total cost with tazes
+    *   Payment Fragment also handles any coupon codes that user would like to apply
+*/
+
 public class PaymentFragment extends Fragment {
     //PaymentActivity Amount
     private String paymentAmount;

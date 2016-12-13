@@ -19,6 +19,11 @@ import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+/*
+    * This fragment lets the user to sign up and login
+    * using facebook credentials
+* */
+
 public class FacebookFragment extends Fragment {
     private CallbackManager callbackManager;
 

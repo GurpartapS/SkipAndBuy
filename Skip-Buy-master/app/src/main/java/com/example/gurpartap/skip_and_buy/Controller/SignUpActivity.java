@@ -29,6 +29,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+/*
+    * This activity is controller of sign up
+    * It takes name, email, password and phone number and once validated
+    * it adds those values to cusotmer table
+*/
 public class SignUpActivity extends AppCompatActivity {
 
     EditText nameText;
@@ -39,13 +44,14 @@ public class SignUpActivity extends AppCompatActivity {
 
     //Button alreadyMemberButton;
     Button continueButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_sign_up);
-                setupUI(findViewById(R.id.signupScreen));
-        Window window=this.getWindow();
+        setupUI(findViewById(R.id.signupScreen));
+        Window window = this.getWindow();
         //window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimary));
         //window.setStatusBarColor(this.getResources().getColor(R.color.colorPrimary));
         YoYo.with(Techniques.Bounce)
@@ -144,34 +150,34 @@ public class SignUpActivity extends AppCompatActivity {
         continueButton.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View view) {
-                        if (nameText.getText().toString().equals("")||emailText.getText().toString().equals("")||passwordText.getText().toString().equals("")||phoneNumber.getText().toString().equals("")) {
-                            String message="";
+                        if (nameText.getText().toString().equals("") || emailText.getText().toString().equals("") || passwordText.getText().toString().equals("") || phoneNumber.getText().toString().equals("")) {
+                            String message = "";
 
-                            if(phoneNumber.getText().toString().equals("")){
+                            if (phoneNumber.getText().toString().equals("")) {
                                 phoneNumber.requestFocus();
                                 phoneNumber.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
-                                message="Please Enter Phone Number";
+                                message = "Please Enter Phone Number";
                                 phoneNumber.setTextColor(Color.RED);
                             }
 
-                            if(passwordText.getText().toString().equals("")){
+                            if (passwordText.getText().toString().equals("")) {
                                 passwordText.requestFocus();
                                 passwordText.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
-                                message="Please Enter Password";
+                                message = "Please Enter Password";
                                 passwordText.setTextColor(Color.RED);
                             }
 
-                            if(emailText.getText().toString().equals("")){
+                            if (emailText.getText().toString().equals("")) {
                                 emailText.requestFocus();
                                 emailText.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
-                                message="Please Enter Email";
+                                message = "Please Enter Email";
                                 emailText.setTextColor(Color.RED);
                             }
 
-                            if(nameText.getText().toString().equals("")){
+                            if (nameText.getText().toString().equals("")) {
                                 nameText.requestFocus();
                                 nameText.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
-                                message="Please Enter Name";
+                                message = "Please Enter Name";
                                 nameText.setTextColor(Color.RED);
                             }
 
@@ -180,7 +186,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                         } else {
                             String EMAIL_REGEX = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
-                            String PHONE_REGEX="(\\d{3}){2}\\d{4}";
+                            String PHONE_REGEX = "(\\d{3}){2}\\d{4}";
                             Boolean emailValidation = emailText.getText().toString().matches(EMAIL_REGEX);
                             if (emailValidation == false) {
                                 Snackbar.make(view, "Invalid Email", Snackbar.LENGTH_LONG)
@@ -188,26 +194,21 @@ public class SignUpActivity extends AppCompatActivity {
                                 emailText.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
                                 emailText.setTextColor(Color.RED);
                                 emailText.requestFocus();
-                            }
-                            else if (passwordText.getText().toString().length()<6) {
+                            } else if (passwordText.getText().toString().length() < 6) {
                                 Snackbar.make(view, "Please Enter Strong Password", Snackbar.LENGTH_LONG)
                                         .setAction("Action", null).show();
 
                                 passwordText.requestFocus();
                                 passwordText.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
                                 passwordText.setTextColor(Color.RED);
-                            }
-
-                            else if (phoneNumber.getText().toString().matches(PHONE_REGEX)==false) {
+                            } else if (phoneNumber.getText().toString().matches(PHONE_REGEX) == false) {
                                 Snackbar.make(view, "Invalid Phone Number", Snackbar.LENGTH_LONG)
                                         .setAction("Action", null).show();
 
                                 phoneNumber.requestFocus();
                                 phoneNumber.getBackground().setColorFilter(getResources().getColor(R.color.errorTextField), PorterDuff.Mode.SRC_ATOP);
                                 phoneNumber.setTextColor(Color.RED);
-                            }
-
-                            else {
+                            } else {
                                 emailText.setTextColor(Color.WHITE);
                                 emailText.getBackground().setColorFilter(getResources().getColor(R.color.editTextField), PorterDuff.Mode.SRC_ATOP);
                                 passwordText.setTextColor(Color.WHITE);
@@ -219,9 +220,9 @@ public class SignUpActivity extends AppCompatActivity {
 
                                 try {
 
-                                   new AsyncTaskRunner(view).execute();
+                                    new AsyncTaskRunner(view).execute();
 
-                                }catch (Exception e) {
+                                } catch (Exception e) {
                                     Snackbar.make(view, e.getMessage(), Snackbar.LENGTH_LONG)
                                             .setAction("Action", null).show();
                                 }
@@ -232,9 +233,9 @@ public class SignUpActivity extends AppCompatActivity {
         );
     }
 
-    public static void hideSoftKeyboard(Activity activity){
-        InputMethodManager inputMethodManager=(InputMethodManager)activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(),0);
+    public static void hideSoftKeyboard(Activity activity) {
+        InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
     }
 
     private class SendfeedbackJob extends AsyncTask<String, Void, String> {
@@ -252,8 +253,8 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
 
-    public void setupUI(View view){
-        if(!(view instanceof EditText)){
+    public void setupUI(View view) {
+        if (!(view instanceof EditText)) {
             view.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
@@ -263,18 +264,19 @@ public class SignUpActivity extends AppCompatActivity {
             });
         }
 
-        if(view instanceof ViewGroup){
-            for(int i=0;i<((ViewGroup)view).getChildCount();i++){
-                View innerView=((ViewGroup)view).getChildAt(i);
+        if (view instanceof ViewGroup) {
+            for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
+                View innerView = ((ViewGroup) view).getChildAt(i);
                 setupUI(innerView);
             }
         }
     }
 
-    public void signInActivity(View view){
-        Intent intent=new Intent(this, LoginActivity.class);
+    public void signInActivity(View view) {
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+
     private class AsyncTaskRunner extends AsyncTask<String, String, String> {
 
         private String resp;
@@ -290,21 +292,20 @@ public class SignUpActivity extends AppCompatActivity {
                 if (connect != null) {
 
                     PreparedStatement verifyUser = connect.prepareStatement("Select * from UserAccount where email=?");
-                    verifyUser.setString(1,emailText.getText().toString());
+                    verifyUser.setString(1, emailText.getText().toString());
 
                     ResultSet verifyUserResultset = verifyUser.executeQuery();
 
-                    Boolean accountExists=false;
+                    Boolean accountExists = false;
 
-                    if(verifyUserResultset.next()) {
+                    if (verifyUserResultset.next()) {
 
                         Snackbar.make(view, "Account already exists", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
-                        accountExists=true;
-                    }
-                        else {
+                        accountExists = true;
+                    } else {
 
-                        Customer newCustomer=new Customer(nameText.getText().toString(),emailText.getText().toString(),
+                        Customer newCustomer = new Customer(nameText.getText().toString(), emailText.getText().toString(),
                                 passwordText.getText().toString(), phoneNumber.getText().toString());
 
 
@@ -316,7 +317,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                             if (connect1 != null) {
                                 PreparedStatement statement1 = connect1.prepareStatement("Insert into customer(customerName,customerEmail,customerPassword,customerPhone) values(?,?,?,?)");
-                                UserAccount.email=newCustomer.getEmail();
+                                UserAccount.email = newCustomer.getEmail();
                                 statement1.setString(1, newCustomer.getName());
                                 statement1.setString(2, newCustomer.getEmail());
                                 statement1.setString(3, newCustomer.getPassword());
@@ -347,21 +348,19 @@ public class SignUpActivity extends AppCompatActivity {
                         }
                     }
 
-                }
-                else {
+                } else {
                     Snackbar.make(view, "Connection Problem", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
 
                 }
-            }
-            catch(Exception e){
+            } catch (Exception e) {
 
             }
         }
 
         @Override
         protected String doInBackground(String... params) {
-                        return null;
+            return null;
         }
 
         /*

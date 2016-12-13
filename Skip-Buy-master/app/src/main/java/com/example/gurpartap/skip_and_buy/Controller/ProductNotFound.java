@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 
 import com.example.gurpartap.skip_and_buy.R;
 
+/*
+    * ProductNotFound handles the operations regarding the view which is called
+    * when the product information is not found once user scans the product using the scanner
+*/
 
 public class ProductNotFound extends Fragment {
     @Override

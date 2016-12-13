@@ -3,6 +3,13 @@ package com.example.gurpartap.skip_and_buy.Model;
 /**
  * Created by GURPARTAP on 2016-09-16.
  */
+
+/*
+    *   This is model class for shopping cart.
+    *   It stores icon, name, amount,weight,productId
+    *   and quantity of items in shopping cart
+*/
+
 public class ShoppingCartItem {
 
 

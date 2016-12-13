@@ -17,6 +17,13 @@ import com.example.gurpartap.skip_and_buy.R;
 
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 
+/*
+    *   WelcomeActivity has very pretty information about the Application
+    *   It has synchronized animations and also triggers tour with the help
+    *   of take tour functionality
+    *   It also allows user to skip the tour
+*/
+
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override

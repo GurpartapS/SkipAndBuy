@@ -1,7 +1,8 @@
 package com.example.gurpartap.skip_and_buy.Controller;
 
 import android.net.Uri;
-import android.support.v7.app.ActionBar;import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -19,22 +20,14 @@ import it.slyce.messaging.message.Message;
 import it.slyce.messaging.message.MessageSource;
 import it.slyce.messaging.message.TextMessage;
 
+
+/*
+    ** ConnectActivity is responsible for handling communication between agent and customer
+    ** ConnectActivity connects with the interface and provides functionality of profile picture and text message interface
+ */
+
 public class ConnectActivity extends AppCompatActivity {
-
-
-    private static String[] latin = {
-            "Vestibulum dignissim enim a mauris malesuada fermentum. Vivamus tristique consequat turpis, pellentesque.",
-            "Quisque nulla leo, venenatis ut augue nec, dictum gravida nibh. Donec augue nisi, volutpat nec libero.",
-            "Cras varius risus a magna egestas.",
-            "Mauris tristique est eget massa mattis iaculis. Aenean sed purus tempus, vestibulum ante eget, vulputate mi. Pellentesque hendrerit luctus tempus. Cras feugiat orci.",
-            "Morbi ullamcorper, sapien mattis viverra facilisis, nisi urna sagittis nisi, at luctus lectus elit.",
-            "Phasellus porttitor fermentum neque. In semper, libero id mollis.",
-            "Praesent fermentum hendrerit leo, ac rutrum ipsum vestibulum at. Curabitur pellentesque augue.",
-            "Mauris finibus mi commodo molestie placerat. Curabitur aliquam metus vitae erat vehicula ultricies. Sed non quam nunc.",
-            "Praesent vel velit at turpis vestibulum eleifend ac vehicula leo. Nunc lacinia tellus eget ipsum consequat fermentum. Nam purus erat, mollis sed ullamcorper nec, efficitur.",
-            "Suspendisse volutpat enim eros, et."
-    };
-
+    
     private static String[] urls = {
             "http://en.l4c.me/fullsize/googleplex-mountain-view-california-1242979177.jpg",
             "http://entropymag.org/wp-content/uploads/2014/10/outer-space-wallpaper-pictures.jpg",
@@ -77,49 +70,6 @@ public class ConnectActivity extends AppCompatActivity {
                 Log.d("inf", "******************************** " + imageUri);
             }
         });
-/*
-        slyceMessagingFragment.setLoadMoreMessagesListener(new LoadMoreMessagesListener() {
-            @Override
-            public List<Message> loadMoreMessages() {
-                Log.d("info", "loadMoreMessages()");
-
-                if (!hasLoadedMore) {
-                    hasLoadedMore = true;
-                    ArrayList<Message> messages = new ArrayList<>();
-                    GeneralOptionsMessage generalTextMessage = new GeneralOptionsMessage();
-                    generalTextMessage.setTitle("Started group");
-                    generalTextMessage.setFinalText("Accepted");
-                    generalTextMessage.setOptions(new String[]{"Accept", "Reject"});
-                    generalTextMessage.setOnOptionSelectedListener(new OnOptionSelectedListener() {
-                        @Override
-                        public String onOptionSelected(int optionSelected) {
-                            if (optionSelected == 0) {
-                                return "Accepted";
-                            } else {
-                                return "Rejected";
-                            }
-                        }
-                    });
-                    //messages.add(generalTextMessage);
-                    //for (int i = 0; i < 50; i++)
-
-                    Message message;
-
-                    TextMessage textMessage = new TextMessage();
-                    textMessage.setText("Hi There!! How may I help you?");
-
-                    //messages.add(textMessage);
-                    Log.d("info", "loadMoreMessages() returns");
-                    return messages;
-                } else {
-                    slyceMessagingFragment.setMoreMessagesExist(false);
-                    return new ArrayList<>();
-                }
-            }
-        });
-*/
-        //slyceMessagingFragment.setMoreMessagesExist(true);
-
 
         try {
             Thread.sleep(1000 * 3);
@@ -127,14 +77,14 @@ public class ConnectActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         ScheduledExecutorService scheduleTaskExecutor = Executors.newScheduledThreadPool(1);
-                TextMessage textMessage = new TextMessage();
-                textMessage.setText("Hi there!! How may I help you??");
-                textMessage.setAvatarUrl("https://lh3.googleusercontent.com/-Y86IN-vEObo/AAAAAAAAAAI/AAAAAAAKyAM/6bec6LqLXXA/s0-c-k-no-ns/photo.jpg");
-                textMessage.setDisplayName("Gary Johnson");
-                textMessage.setUserId("LP");
-                textMessage.setDate(new Date().getTime());
-                textMessage.setSource(MessageSource.EXTERNAL_USER);
-                slyceMessagingFragment.addNewMessage(textMessage);
+        TextMessage textMessage = new TextMessage();
+        textMessage.setText("Hi there!! How may I help you??");
+        textMessage.setAvatarUrl("https://lh3.googleusercontent.com/-Y86IN-vEObo/AAAAAAAAAAI/AAAAAAAKyAM/6bec6LqLXXA/s0-c-k-no-ns/photo.jpg");
+        textMessage.setDisplayName("Gary Johnson");
+        textMessage.setUserId("LP");
+        textMessage.setDate(new Date().getTime());
+        textMessage.setSource(MessageSource.EXTERNAL_USER);
+        slyceMessagingFragment.addNewMessage(textMessage);
 
 
     }
@@ -148,7 +98,7 @@ public class ConnectActivity extends AppCompatActivity {
             message = textMessage;
         } else {
             MediaMessage mediaMessage = new MediaMessage();
-            mediaMessage.setUrl(urls[(int)(Math.random() * 5)]);
+            mediaMessage.setUrl(urls[(int) (Math.random() * 5)]);
             message = mediaMessage;
         }
         message.setDate(new Date().getTime());

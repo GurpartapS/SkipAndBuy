@@ -28,6 +28,11 @@ import android.widget.ImageView;
 import android.widget.OverScroller;
 import android.widget.Scroller;
 
+/*
+    * Touch image view is used to display the flyer image
+    * Image is zoomable and has the pinch zoom functionality
+*/
+
 public class TouchImageView extends ImageView {
 
 //	private static final String DEBUG = "DEBUG";

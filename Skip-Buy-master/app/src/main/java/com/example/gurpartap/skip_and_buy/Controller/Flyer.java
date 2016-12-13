@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 
 import com.example.gurpartap.skip_and_buy.R;
 
+/*
+    * Flyer fragment takes care of the digital flyers
+*/
 public class Flyer extends Fragment {
 
 

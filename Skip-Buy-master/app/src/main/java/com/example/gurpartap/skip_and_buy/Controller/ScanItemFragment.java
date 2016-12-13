@@ -8,6 +8,11 @@ import android.view.ViewGroup;
 
 import com.google.zxing.integration.android.IntentIntegrator;
 
+/*
+    *   ScanItemFragment initiates the ZXing barcode scanner which helps
+    *   user to scan the item bar code and redirect to the product inforamtion fragment
+*/
+
 public class ScanItemFragment extends Fragment {
     IntentIntegrator scanIntegrator;
 

@@ -4,6 +4,13 @@ package com.example.gurpartap.skip_and_buy.Model;
  * Created by OWNER on 10/19/2016.
  */
 
+/*
+    *   This class is mapped to product table
+    *   Its instance variables(productId, productName,
+    *   productWeight,productPrice,productDescription)
+    *   are mapped to columns of product table
+*/
+
 public class Product {
 
     @com.google.gson.annotations.SerializedName("productId")

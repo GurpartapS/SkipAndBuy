@@ -4,6 +4,12 @@ package com.example.gurpartap.skip_and_buy.Model;
  * Created by OWNER on 10/19/2016.
  */
 
+/*
+    *   This java class stores info related to the store
+    *   like store name, store description and store address
+    *   This is mapped to store table in the database
+*/
+
 public class Store {
 
     @com.google.gson.annotations.SerializedName("storeName")

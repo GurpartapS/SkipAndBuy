@@ -1,7 +1,6 @@
 package com.example.gurpartap.skip_and_buy.Controller;
 
 import android.app.Activity;
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -15,18 +14,14 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import android.os.CountDownTimer;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.FileProvider;
 import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.widget.SearchView;
 import android.util.Log;
-import android.view.MenuInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -44,13 +39,10 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.afollestad.materialdialogs.Theme;
 import com.example.gurpartap.skip_and_buy.Model.Customer;
-import com.example.gurpartap.skip_and_buy.Model.OrderHistoryItem;
 import com.example.gurpartap.skip_and_buy.Model.SqlConnection;
 import com.example.gurpartap.skip_and_buy.Model.UserAccount;
 import com.example.gurpartap.skip_and_buy.R;
-import com.google.android.gms.vision.text.Text;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
@@ -63,36 +55,28 @@ import org.json.JSONException;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import it.slyce.messaging.SlyceMessagingFragment;
-import it.slyce.messaging.listeners.LoadMoreMessagesListener;
-import it.slyce.messaging.listeners.OnOptionSelectedListener;
-import it.slyce.messaging.listeners.UserSendsMessageListener;
-import it.slyce.messaging.message.GeneralOptionsMessage;
 import it.slyce.messaging.message.MediaMessage;
 import it.slyce.messaging.message.Message;
 import it.slyce.messaging.message.MessageSource;
 import it.slyce.messaging.message.TextMessage;
-import layout.EmptyShoppingCart;
-import layout.search_product;
 
-import static com.example.gurpartap.skip_and_buy.R.style.AppTheme;
+/*
+    *   MainActivity handles most of the operations for Skip & Buy
+    *   MainActivity handles fragment swapping when options are selected from the navbar
+    *   MainActivity also handles operations of switching to other activities
+    *   MainActivity also handles button on click operations for various frament buttons
+*/
 
 
 public class MainActivity extends AppCompatActivity
@@ -108,18 +92,6 @@ public class MainActivity extends AppCompatActivity
     static final int REQUEST_TAKE_PHOTO = 1888;
     public static boolean tourDoneStore = false;
     public static boolean tourDone = false;
-    private static String[] latin = {
-            "Vestibulum dignissim enim a mauris malesuada fermentum. Vivamus tristique consequat turpis, pellentesque.",
-            "Quisque nulla leo, venenatis ut augue nec, dictum gravida nibh. Donec augue nisi, volutpat nec libero.",
-            "Cras varius risus a magna egestas.",
-            "Mauris tristique est eget massa mattis iaculis. Aenean sed purus tempus, vestibulum ante eget, vulputate mi. Pellentesque hendrerit luctus tempus. Cras feugiat orci.",
-            "Morbi ullamcorper, sapien mattis viverra facilisis, nisi urna sagittis nisi, at luctus lectus elit.",
-            "Phasellus porttitor fermentum neque. In semper, libero id mollis.",
-            "Praesent fermentum hendrerit leo, ac rutrum ipsum vestibulum at. Curabitur pellentesque augue.",
-            "Mauris finibus mi commodo molestie placerat. Curabitur aliquam metus vitae erat vehicula ultricies. Sed non quam nunc.",
-            "Praesent vel velit at turpis vestibulum eleifend ac vehicula leo. Nunc lacinia tellus eget ipsum consequat fermentum. Nam purus erat, mollis sed ullamcorper nec, efficitur.",
-            "Suspendisse volutpat enim eros, et."
-    };
 
     private static String[] urls = {
             "http://en.l4c.me/fullsize/googleplex-mountain-view-california-1242979177.jpg",

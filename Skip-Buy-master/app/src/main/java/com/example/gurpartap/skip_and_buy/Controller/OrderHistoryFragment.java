@@ -21,6 +21,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+    *   OrderHistoryFragment has the information about the User purchase OrderHistory
+    *   OrderHistoryFragment has the ListView of the OrderHistory Items
+    *   OrderHistoryFragment also handles operations regarding list items including removing items from listview
+*/
+
 public class OrderHistoryFragment extends ListFragment implements AdapterView.OnItemClickListener {
 
     Button checkout;

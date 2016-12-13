@@ -10,6 +10,11 @@ import android.util.Log;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+/*
+    *   MyApplication class does not have any concrete usage for now but
+    *   would be focused on providing more stable security measures
+*/
+
 public class MyApplication extends Application {
     @Override
     public void onCreate() {

@@ -24,6 +24,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 
+/*
+    *   UserProfileFragment displays important information about the user
+    *   Information displayed includes user email, phone, password and user profile image
+    *   UserProfileFragment also allows user to edit the profile information
+    *   It also allows user to sign out of the application
+*/
+
 public class UserProfileFragment extends Fragment {
 
     private String userEmail;
