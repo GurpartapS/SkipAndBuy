@@ -57,7 +57,7 @@
                 android:layout_width="40dp"
                 android:inputType="number"
                 android:ems="10"
-                android:id="@+id/editText"
+                android:id="@+id/quantityEditText"
                 android:layout_weight="1"
                 android:layout_gravity="left"
                 android:layout_marginLeft="0dp"

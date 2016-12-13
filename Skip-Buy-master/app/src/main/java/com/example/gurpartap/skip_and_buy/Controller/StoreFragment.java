@@ -1,20 +1,13 @@
 package com.example.gurpartap.skip_and_buy.Controller;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gurpartap.skip_and_buy.Model.SqlConnection;
@@ -23,6 +16,7 @@ import com.example.gurpartap.skip_and_buy.R;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Random;
 
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
@@ -55,8 +49,11 @@ public class StoreFragment extends Fragment {
         Button shopButton=(Button)rootView.findViewById(R.id.shopNowButton);
         Button viewFlyerButton=(Button)rootView.findViewById(R.id.viewFlyerButton);
         //ImageView menuButton=(ImageView)rootView.findViewById(R.id.imageView);
+        Random rand = new Random();
 
-        String SHOWCASE_ID="32";
+        int  n = rand.nextInt(10000) + 1;
+
+        String SHOWCASE_ID=Integer.toString(n);
         ShowcaseConfig config = new ShowcaseConfig();
         config.setDelay(500); // half second between each showcase view
 
@@ -70,10 +67,11 @@ public class StoreFragment extends Fragment {
         sequence.addSequenceItem(viewFlyerButton,
                 "View today's flyer and view best deals in store", "GOT IT");
 
-        /*sequence.addSequenceItem(menuButton,
-        "Navigate to your order history, shopping cart and profile from here","GOT IT");
-        */
-        sequence.start();
+        if(MainActivity.tourDoneStore==false){
+
+            sequence.start();
+            MainActivity.tourDoneStore=true;
+        }
 
         return rootView;
     }

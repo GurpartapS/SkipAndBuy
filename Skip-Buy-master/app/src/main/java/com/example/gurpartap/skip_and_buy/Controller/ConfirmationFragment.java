@@ -10,9 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.gurpartap.skip_and_buy.Controller.LoginActivity;
 import com.example.gurpartap.skip_and_buy.Model.SqlConnection;
 import com.example.gurpartap.skip_and_buy.Model.UserAccount;
 import com.example.gurpartap.skip_and_buy.R;
@@ -22,7 +20,6 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,8 +44,11 @@ public class ConfirmationFragment extends Fragment {
     String paymentStatus;
     String paymentDateTime;
     String paymentId;
-    String receiptId="";
+    public static String receiptId="";
+    public static String userId="";
     List<String> productList;
+    String productQuantity;
+
     Button ok;
 
     @Override
@@ -75,8 +75,8 @@ public class ConfirmationFragment extends Fragment {
         textViewAmount.setText("$ "+paymentAmount);
         textViewStatus.setText(paymentStatus);
 
-        String allProductList="";
-
+        String allProductList=userId+","+receiptId;
+/*
         for(int i=0;i<productList.size();i++){
             allProductList=allProductList+productList.get(i);
 
@@ -87,7 +87,7 @@ public class ConfirmationFragment extends Fragment {
                 allProductList=allProductList+",";
             }
         }
-
+*/
         ImageView imageView = (ImageView) view.findViewById(R.id.qrCode);
         try {
             Bitmap bitmap = encodeAsBitmap(allProductList);
@@ -95,11 +95,7 @@ public class ConfirmationFragment extends Fragment {
         } catch (WriterException e) {
             e.printStackTrace();
         }
-        ok.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                paymentConfirmation();
-            }
-        });
+
         return view;
     }
 
@@ -112,10 +108,7 @@ public class ConfirmationFragment extends Fragment {
         textViewTime.setText(paymentDateTime);
     }
 
-    private void paymentConfirmation(){
-        Intent intent = new Intent(getActivity(), LoginActivity.class);
-        startActivity(intent);
-    }
+
     Bitmap encodeAsBitmap(String str) throws WriterException {
         BitMatrix result;
         try {
@@ -141,7 +134,7 @@ public class ConfirmationFragment extends Fragment {
 
     public void setPaymentDetails(View rootView){
         String storeId="";
-        String userId="";
+        userId="";
 
         try {
             SqlConnection connn = new SqlConnection();
@@ -194,11 +187,14 @@ public class ConfirmationFragment extends Fragment {
                 ResultSet verifyStoreResultset = getStoreInfo.executeQuery();
 
                 String subtotalPrice="0";
+                productQuantity="0";
+
                 while(verifyStoreResultset.next()){
                     productList.add(verifyStoreResultset.getString("productId"));
                     System.out.println("IN THE PAYMENT FRAGMENT CART LOOP WITH STORE ID AS "+storeId+" CUSTOMER ID AS "+userId);
                     subtotalPrice=Integer.toString(Integer.parseInt(subtotalPrice)+
                             Integer.parseInt(verifyStoreResultset.getString("price")));
+                    productQuantity=Integer.toString(Integer.parseInt(verifyStoreResultset.getString("quantity"))+Integer.parseInt(productQuantity));
                 }
 
                 String taxesPrice=Double.toString(0.13*Integer.parseInt(subtotalPrice));
@@ -214,18 +210,20 @@ public class ConfirmationFragment extends Fragment {
 
             if (connect1 != null) {
 
-                PreparedStatement getStoreInfo = connect.prepareStatement("Insert into receipt values(?,?,?,?,?)");
+                PreparedStatement getStoreInfo = connect.prepareStatement("Insert into receipt values(?,?,?,?,?,?)");
 
                 getStoreInfo.setString(1, paymentDateTime);
                 getStoreInfo.setString(2, paymentStatus);
                 getStoreInfo.setString(3, paymentAmount);
                 getStoreInfo.setString(4, userId);
                 getStoreInfo.setString(5, storeId);
+                getStoreInfo.setString(6, productQuantity);
 
                 getStoreInfo.executeUpdate();
 
 
                 if (connect1 != null) {
+
                     PreparedStatement getReceiptId= connect.prepareStatement("Select receiptId from receipt where customerId=? and storeId=? and receiptDateTime=?");
 
                     getReceiptId.setString(1, userId);
@@ -242,12 +240,33 @@ public class ConfirmationFragment extends Fragment {
 
                 }
 
+
+
+                if (connect1 != null) {
+                    PreparedStatement creatOrderHistory = connect1.prepareStatement("Insert into orderHistory values(?,?,?,?,?,?,?)");
+
+                    creatOrderHistory.setString(1, paymentDateTime);
+                    creatOrderHistory.setString(2, paymentStatus);
+                    creatOrderHistory.setString(3, paymentAmount);
+                    creatOrderHistory.setString(4, receiptId);
+                    creatOrderHistory.setString(5, userId);
+                    creatOrderHistory.setString(6, storeId);
+                    creatOrderHistory.setString(7, productQuantity);
+
+                    creatOrderHistory.executeUpdate();
+                }
+                else {
+
+                }
+
+
                 for(int i=0;i<productList.size();i++) {
 
-                    PreparedStatement storeReceiptProducts = connect1.prepareStatement("Insert into receiptProducts values(?,?)");
+                    PreparedStatement storeReceiptProducts = connect1.prepareStatement("Insert into receiptProducts values(?,?,?)");
 
                     storeReceiptProducts.setString(1, receiptId);
                     storeReceiptProducts.setString(2, productList.get(i));
+                    storeReceiptProducts.setString(3, "");
 
                     storeReceiptProducts.executeUpdate();
                 }

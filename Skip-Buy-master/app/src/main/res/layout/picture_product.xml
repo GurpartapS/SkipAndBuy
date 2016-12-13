@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            app:srcCompat="@drawable/apple"
+            android:id="@+id/imageView6"
+            android:layout_weight="1" />
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:padding="5dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:text="Ketchup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/pictureFoundTextView"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_weight="0.14" />
+
+            <TextView
+                android:text="$2/pc."
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/pictureFoundPriceTextView"
+                android:textSize="16dp"
+                android:layout_marginTop="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:text="Did you mean Ketchup?"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/didYouMeanTextView"
+                android:textSize="16dp"
+                android:layout_marginTop="2dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,16 +1,14 @@
 package com.example.gurpartap.skip_and_buy.Controller;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gurpartap.skip_and_buy.Model.SqlConnection;
@@ -20,6 +18,7 @@ import com.example.gurpartap.skip_and_buy.R;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Random;
 
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
@@ -30,13 +29,15 @@ public class ProductInfoFragment extends Fragment {
     private String productName;
     private String productPrice;
     private String productDescription;
-    private String productQuantity;
+    private EditText productQuantity;
     private String productBrand;
     private String productSKU;
     private String productUPC;
     private String productWeight;
     private String productReviews;
     private View rootView;
+    private ImageView productImageView;
+    private int productImage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,8 +67,9 @@ public class ProductInfoFragment extends Fragment {
         TextView productWeightSpec=(TextView)rootView.findViewById(R.id.productWeightSpec);
         productWeightSpec.setText("Weight:  "+productWeight);
 
-        EditText productQuantity=(EditText)rootView.findViewById(R.id.productQuantity);
-        productQuantity.setEnabled(false);
+        productQuantity=(EditText)rootView.findViewById(R.id.productQuantity);
+
+        //productQuantity.setEnabled(false);
 
         TextView productSKUField=(TextView)rootView.findViewById(R.id.productSKUSpec);
         productSKUField.setText("SKU:  "+productSKU);
@@ -78,7 +80,15 @@ public class ProductInfoFragment extends Fragment {
         Button scanAnother=(Button)rootView.findViewById(R.id.scanAnotherItemButton);
         Button addItemToCart=(Button)rootView.findViewById(R.id.addItemToCartButton);
 
-        String SHOWCASE_ID="26";
+        Random rand = new Random();
+
+        int  n = rand.nextInt(10000) + 1;
+
+        String SHOWCASE_ID=Integer.toString(n);
+        productImageView=(ImageView)rootView.findViewById(R.id.imageView7);
+
+        productImageView.setImageResource(productImage);
+
         ShowcaseConfig config = new ShowcaseConfig();
         config.setDelay(500); // half second between each showcase view
 
@@ -95,7 +105,11 @@ public class ProductInfoFragment extends Fragment {
         sequence.addSequenceItem(addItemToCart,
                 "Use this button to add this product and navigate to shopping cart","GOT IT");
 
-        sequence.start();
+        if(MainActivity.tourDone==false){
+
+            sequence.start();
+            MainActivity.tourDone=true;
+        }
 
 
         return rootView;
@@ -153,6 +167,49 @@ public class ProductInfoFragment extends Fragment {
                     productWeight=verifyProductResultset.getString("Product_Weight");
                     productReviews=verifyProductResultset.getString("Product_Reviews");
                     productUPC=MainActivity.scannedProductCode;
+                    productImage=R.drawable.ketchup;
+                    if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Excel")){
+                        productImage=R.drawable.excelchew;
+                    }
+
+                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Sauce")){
+                        productImage=R.drawable.sauce;
+                    }
+                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Hair Spray")){
+                        productImage=R.drawable.tresemme;
+                    }
+                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Organics")){
+                        productImage=R.drawable.organics;
+                    }
+                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Knorr Soup")){
+                        productImage=R.drawable.knorr;
+                    }
+
+                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Honey")){
+                        productImage=R.drawable.honey;
+                    }
+                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Croissants")){
+                        productImage=R.drawable.crescent;
+                    }
+                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Milk")){
+                        productImage=R.drawable.milk;
+                    }
+                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Veg Soup")){
+                        productImage=R.drawable.campbell;
+                    }
+                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Coffee")){
+                        productImage=R.drawable.coffee;
+                    }
+                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Beans")){
+                        productImage=R.drawable.beans;
+                    }
+                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Apples")){
+                                productImage=R.drawable.apple;
+                            }
+
+                    else{
+
+                    }
 
                 }
                 else{
@@ -172,9 +229,11 @@ public class ProductInfoFragment extends Fragment {
     }
 
 
-    public void saveShoppingCart(){
+    public void saveShoppingCart(String productQuantityInCart){
         String storeId="";
         String userId="";
+
+
 
         try {
             SqlConnection connn = new SqlConnection();
@@ -239,8 +298,8 @@ public class ProductInfoFragment extends Fragment {
 
                 getProductInfo.setString(1,userId);
                 getProductInfo.setString(2,MainActivity.scannedProductCode);
-                getProductInfo.setString(3,"1");
-                getProductInfo.setString(4,productPrice);
+                getProductInfo.setString(3,productQuantityInCart);
+                getProductInfo.setString(4,Integer.toString(Integer.parseInt(productPrice)*Integer.parseInt(productQuantityInCart)));
                 getProductInfo.setString(5,storeId);
 
                 getProductInfo.executeUpdate();

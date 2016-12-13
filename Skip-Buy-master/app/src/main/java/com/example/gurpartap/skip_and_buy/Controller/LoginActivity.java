@@ -29,7 +29,6 @@ import java.sql.ResultSet;
 import com.example.gurpartap.skip_and_buy.Model.SqlConnection;
 import com.example.gurpartap.skip_and_buy.Model.UserAccount;
 import com.example.gurpartap.skip_and_buy.R;
-import com.facebook.FacebookSdk;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -51,7 +50,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login_screen);
 
 
@@ -74,14 +72,6 @@ public class LoginActivity extends AppCompatActivity {
         emailText = (EditText) findViewById(R.id.emailTextField);
         passwordText = (EditText) findViewById(R.id.passwordTextField);
         loginButton = (Button) findViewById(R.id.loginButton);
-
-
-
-        //loadingBackScreen = (TextView) findViewById(R.id.LoadingBackScreen);
-        //loadingImage = (ImageView) findViewById(R.id.LoadingImage);
-
-        //loadingBackScreen.setVisibility(View.GONE);
-        //loadingImage.setVisibility(View.GONE);
 
         emailText.setTextColor(Color.WHITE);
         emailText.getBackground().setColorFilter(getResources().getColor(R.color.editTextField), PorterDuff.Mode.SRC_ATOP);
@@ -129,18 +119,11 @@ public class LoginActivity extends AppCompatActivity {
 
                     public void onClick(View view) {
 
-                        //loadingBackScreen.setVisibility(View.VISIBLE);
-                        //loadingImage.setVisibility(View.VISIBLE);
-
-
                         final View spinnerView=view;
                         new CountDownTimer(1000, 1000) {
                             @Override
                             public void onTick(long millisUntilFinished) {
 
-                                /*YoYo.with(Techniques.Bounce)
-                                        .duration(1000)
-                                        .playOn(findViewById(R.id.LoadingImage));*/
                             }
 
                             @Override
@@ -204,8 +187,8 @@ public class LoginActivity extends AppCompatActivity {
                                 conn=new SqlConnection();
                                 connect=conn.connect();
 
-                                PreparedStatement statement = connect.prepareStatement("Select * from dbo.UserAccount where " +
-                                        "email=? and password=?");
+                                PreparedStatement statement = connect.prepareStatement("Select * from dbo.agent where " +
+                                        "agentEmail=? and agentPassword=?");
 
 
                                 statement.setString(1,currentUser.getEmail());

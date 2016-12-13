@@ -1,27 +1,31 @@
-package com.example.gurpartap.skip_and_buy.Controller;
 
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.v4.app.ListFragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+        package com.example.gurpartap.skip_and_buy.Controller;
 
-import com.example.gurpartap.skip_and_buy.Model.ShoppingCartItem;
-import com.example.gurpartap.skip_and_buy.Model.SqlConnection;
-import com.example.gurpartap.skip_and_buy.Model.UserAccount;
-import com.example.gurpartap.skip_and_buy.R;
+        import android.annotation.TargetApi;
+        import android.content.Intent;
+        import android.graphics.drawable.Drawable;
+        import android.os.Build;
+        import android.os.Bundle;
+        import android.support.v4.app.ListFragment;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.view.ViewGroup;
+        import android.widget.AdapterView;
+        import android.widget.Button;
+        import android.widget.EditText;
+        import android.widget.Toast;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
+        import com.example.gurpartap.skip_and_buy.Model.ShoppingCartItem;
+        import com.example.gurpartap.skip_and_buy.Model.SqlConnection;
+        import com.example.gurpartap.skip_and_buy.Model.UserAccount;
+        import com.example.gurpartap.skip_and_buy.R;
+
+        import java.sql.Connection;
+        import java.sql.PreparedStatement;
+        import java.sql.ResultSet;
+        import java.util.ArrayList;
+        import java.util.Arrays;
+        import java.util.List;
 
 public class ShoppingCartFragment extends ListFragment implements AdapterView.OnItemClickListener {
 
@@ -50,6 +54,7 @@ public class ShoppingCartFragment extends ListFragment implements AdapterView.On
         Toast.makeText(getActivity(),"Item: "+position,Toast.LENGTH_SHORT).show();
 
     }
+
 
     public void updateShoppingCart(){
         String storeId="";
@@ -123,9 +128,53 @@ public class ShoppingCartFragment extends ListFragment implements AdapterView.On
                         ResultSet verifyCartProductResultSet= getCartProductInfo.executeQuery();
                         if(verifyCartProductResultSet.next()){
                             int productImage=R.drawable.ketchup;
-                            if(verifyCartProductResultSet.getString("Product_Name").equalsIgnoreCase("Excel"))
+                            if(verifyCartProductResultSet.getString("Product_Name").equalsIgnoreCase("Excel")){
                                 productImage=R.drawable.excelchew;
-                                myList.add(new ShoppingCartItem(productImage,verifyCartProductResultSet.getString("Product_Name"),verifyCartProductResultSet.getString("Product_Price"),verifyCartProductResultSet.getString("Product_Weight"),verifyCartProductResultSet.getString("Product_Id")));
+                            }
+
+                            else if(verifyCartProductResultSet.getString("Product_Name").equalsIgnoreCase("Sauce")){
+                                productImage=R.drawable.sauce;
+                            }
+                            else if(verifyCartProductResultSet.getString("Product_Name").equalsIgnoreCase("Hair Spray")){
+                                productImage=R.drawable.tresemme;
+                            }
+                            else if(verifyCartProductResultSet.getString("Product_Name").equalsIgnoreCase("Organics")){
+                                productImage=R.drawable.organics;
+                            }
+                            else if(verifyCartProductResultSet.getString("Product_Name").equalsIgnoreCase("Apples")){
+                                productImage=R.drawable.apple;
+                            }
+                            else if(verifyCartProductResultSet.getString("Product_Name").equalsIgnoreCase("Knorr Soup")){
+                                productImage=R.drawable.knorr;
+                            }
+
+                            else if(verifyCartProductResultSet.getString("Product_Name").equalsIgnoreCase("Honey")){
+                                productImage=R.drawable.honey;
+                            }
+                            else if(verifyCartProductResultSet.getString("Product_Name").equalsIgnoreCase("Croissants")){
+                                productImage=R.drawable.crescent;
+                            }
+                            else if(verifyCartProductResultSet.getString("Product_Name").equalsIgnoreCase("Milk")){
+                                productImage=R.drawable.milk;
+                            }
+                            else if(verifyCartProductResultSet.getString("Product_Name").equalsIgnoreCase("Veg Soup")){
+                                productImage=R.drawable.campbell;
+                            }
+                            else if(verifyCartProductResultSet.getString("Product_Name").equalsIgnoreCase("Coffee")){
+                                productImage=R.drawable.coffee;
+                            }
+                            else if(verifyCartProductResultSet.getString("Product_Name").equalsIgnoreCase("Beans")){
+                                productImage=R.drawable.beans;
+                            }
+                            else if(verifyCartProductResultSet.getString("Product_Name").equalsIgnoreCase("Apples")){
+                                productImage=R.drawable.apple;
+                            }
+
+                            else{
+
+                            }
+
+                            myList.add(new ShoppingCartItem(productImage,verifyCartProductResultSet.getString("Product_Name"),verifyStoreResultset.getString("price"),verifyCartProductResultSet.getString("Product_Weight"),verifyCartProductResultSet.getString("Product_Id"),verifyStoreResultset.getString("quantity")));
                         }
                     }
                     else {
@@ -140,13 +189,15 @@ public class ShoppingCartFragment extends ListFragment implements AdapterView.On
                     System.out.println(myObject);
                 }
 
+                ArrayList<ShoppingCartItem> itemList = new ArrayList<ShoppingCartItem>(Arrays.asList(shoppingCartItem));
 
-                ShoppingCartAdapter adapter=new ShoppingCartAdapter(this.getContext(),R.layout.activity_shopping_cart_item, shoppingCartItem);
-
-
-
+                if(shoppingCartItem.length!=0) {
+                ShoppingCartAdapter adapter=new ShoppingCartAdapter(this.getContext(),R.layout.activity_shopping_cart_item, itemList);
                 setListAdapter(adapter);
-
+            }
+            else{
+                ((MainActivity)getActivity()).emptyShoppingCart();
+            }
                 //getListView().setOnItemClickListener(this);
 
             }

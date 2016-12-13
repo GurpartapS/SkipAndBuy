@@ -7,7 +7,7 @@ package com.example.gurpartap.skip_and_buy.Model;
 public class UserAccount {
 
     public static String email;
-    private String password;
+    private  String password;
 
     public UserAccount() {
     }

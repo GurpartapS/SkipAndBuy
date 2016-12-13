@@ -3,11 +3,11 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#4099FF</item>
+        <item name="colorPrimary">#2164f4</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorControlNormal">#ffffff</item>
-        <item name="colorControlActivated">#4099FF</item>
-        <item name="colorControlHighlight">#904099FF</item>
+        <item name="colorControlActivated">#2164f4</item>
+        <item name="colorControlHighlight">#902164f4</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -27,5 +27,15 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
-
+    <style name="MyTheme">
+        <item name="backgroundColor">@color/background_white</item>
+        <item name="timestampTextColor">@color/text_black</item>
+        <item name="localBubbleBackground">@color/background_blue</item>
+        <item name="localBubbleTextColor">@color/text_white</item>
+        <item name="externalBubbleBackground">@color/background_gray</item>
+        <item name="externalBubbleTextColor">@color/text_black</item>
+        <item name="snackbarBackground">@color/background_gray_darkest</item>
+        <item name="snackbarTitleColor">@color/text_black</item>
+        <item name="snackbarButtonColor">@color/text_blue</item>
+    </style>
 </resources>

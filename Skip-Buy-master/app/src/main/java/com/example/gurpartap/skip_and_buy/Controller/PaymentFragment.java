@@ -3,19 +3,15 @@ package com.example.gurpartap.skip_and_buy.Controller;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.IntegerRes;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.gurpartap.skip_and_buy.Model.PayPalConfig;
-import com.example.gurpartap.skip_and_buy.Model.ShoppingCartItem;
 import com.example.gurpartap.skip_and_buy.Model.SqlConnection;
 import com.example.gurpartap.skip_and_buy.Model.UserAccount;
 import com.example.gurpartap.skip_and_buy.R;
@@ -31,9 +27,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class PaymentFragment extends Fragment {
     //PaymentActivity Amount

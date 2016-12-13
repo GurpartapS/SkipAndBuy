@@ -2,7 +2,6 @@ package com.example.gurpartap.skip_and_buy.Model;
 
 // Use the JDBC driver
 import java.sql.*;
-import com.microsoft.sqlserver.jdbc.*;
 
 public class SqlConnection {
 

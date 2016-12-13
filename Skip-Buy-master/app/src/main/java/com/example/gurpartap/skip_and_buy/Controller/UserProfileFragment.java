@@ -1,10 +1,6 @@
 package com.example.gurpartap.skip_and_buy.Controller;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -22,9 +18,7 @@ import com.example.gurpartap.skip_and_buy.Model.SqlConnection;
 import com.example.gurpartap.skip_and_buy.Model.UserAccount;
 import com.example.gurpartap.skip_and_buy.R;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -43,6 +37,7 @@ public class UserProfileFragment extends Fragment {
     private EditText passwordProfile;
     private ImageView userProfileImageView;
     private FileInputStream fis;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -232,52 +227,14 @@ public class UserProfileFragment extends Fragment {
 
     public void setProfile(View rootView){
 
-            try {
-                SqlConnection connn = new SqlConnection();
+        Customer customer=new Customer();
+        customer=customer.getCustomerDetails(UserAccount.email);
 
-                Connection connect = connn.connect();
-                Connection connect1 = connn.connect();
-
-                if (connect != null) {
-
-                    PreparedStatement getUserInfo = connect.prepareStatement("Select * from UserAccount where email=?");
-
-                    getUserInfo.setString(1,userEmail);
-
-
-                    ResultSet verifyUserResultset = getUserInfo.executeQuery();
-                    System.out.println("PRINTING THE RESULTS OF USER ACCOUNT QUERY");
-                    if(verifyUserResultset.next()){
-                        System.out.println("RESULT:" +verifyUserResultset.getString("password"));
-                        userPassword=verifyUserResultset.getString("password");
-
-                    }
-
-                    PreparedStatement getUserInfo1 = connect1.prepareStatement("Select * from Customer where customerEmail=?");
-
-                    getUserInfo1.setString(1,userEmail);
-
-
-                    ResultSet verifyUserResultset1 = getUserInfo1.executeQuery();
-                    System.out.println("PRINTING THE RESULTS OF CUSTOMER QUERY");
-                    if(verifyUserResultset1.next()){
-                        System.out.println("RESULT:"+verifyUserResultset1.getString("customerName"));
-                        userName=verifyUserResultset1.getString("customerName");
-                        userPhone=verifyUserResultset1.getString("customerPhone");
-                        //userProfileImage=verifyUserResultset1.getInt("customerImage");
-                    }
-
-                }
-                else {
-                    Snackbar.make(rootView, "Connection Problem", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-
-                }
-            }
-            catch(Exception e){
-
-            }
-        }
+        userEmail=UserAccount.email;
+        userName=customer.getName();
+        userPhone=customer.getPhoneNumber();
+        userPassword=customer.getPassword();
+    }
 
 
     private class AsyncTaskRunner extends AsyncTask<String, String, String> {
@@ -297,7 +254,7 @@ public class UserProfileFragment extends Fragment {
 
                 if (connect != null) {
 
-                    PreparedStatement verifyUser = connect.prepareStatement("Select * from UserAccount where email=?");
+                    PreparedStatement verifyUser = connect.prepareStatement("Select * from customer where customerEmail=?");
                     verifyUser.setString(1,emailProfile.getText().toString());
 
                     ResultSet verifyUserResultset = verifyUser.executeQuery();
@@ -333,32 +290,12 @@ public class UserProfileFragment extends Fragment {
 
                         if (statement.executeUpdate() > 0) {
 
-                            if (connect1 != null) {
-                                PreparedStatement statement1 = connect.prepareStatement("Update UserAccount set email=?, password =? where " +
-                                        "email=?");
-
-                                statement1.setString(1, emailProfile.getText().toString());
-                                statement1.setString(2, passwordProfile.getText().toString());
-
-                                statement1.setString(3,UserAccount.email);
-
-                                UserAccount.email=newCustomer.getEmail();
-                                if (statement1.executeUpdate() > 0) {
                                     Snackbar.make(view, "Profile Successfully Saved", Snackbar.LENGTH_LONG)
                                             .setAction("Action", null).show();
 
-                                } else {
-                                    Snackbar.make(view, "Error", Snackbar.LENGTH_LONG)
-                                            .setAction("Action", null).show();
-                                }
-                            } else {
-                                Snackbar.make(view, "Connection Problem", Snackbar.LENGTH_LONG)
-                                        .setAction("Action", null).show();
-
-                            }
 
                         } else {
-                            Snackbar.make(view, "SIGNUP UNSUCCESSFUL ", Snackbar.LENGTH_LONG)
+                            Snackbar.make(view, "Profile Update Unsuccessful", Snackbar.LENGTH_LONG)
                                     .setAction("Action", null).show();
                         }
                     }

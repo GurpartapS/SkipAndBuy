@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -90,14 +89,14 @@ public class WelcomeActivity extends AppCompatActivity {
                             .playOn(findViewById(R.id.textView));
 
                 }
-                if(millisUntilFinished/1000==7) {
+                if(millisUntilFinished/1000==8) {
 
                     imageLogo.setVisibility(View.VISIBLE);
                     YoYo.with(Techniques.SlideInLeft)
                             .duration(2000)
                             .playOn(findViewById(R.id.imageView4));
                 }
-                if(millisUntilFinished/1000==6){
+                if(millisUntilFinished/1000==7){
 
                     brandText.setVisibility(View.VISIBLE);
                     YoYo.with(Techniques.ZoomIn)
@@ -108,7 +107,7 @@ public class WelcomeActivity extends AppCompatActivity {
                             .duration(2000)
                             .playOn(findViewById(R.id.imageView11));
                 }
-                if(millisUntilFinished/1000==5){
+                if(millisUntilFinished/1000==6){
 
                     locateStore.setVisibility(View.VISIBLE);
                     YoYo.with(Techniques.RubberBand)
@@ -119,7 +118,7 @@ public class WelcomeActivity extends AppCompatActivity {
                             .duration(2000)
                             .playOn(findViewById(R.id.imageView12));
                 }
-                if(millisUntilFinished/1000==4){
+                if(millisUntilFinished/1000==5){
 
                     scanProd.setVisibility(View.VISIBLE);
                     YoYo.with(Techniques.RubberBand)
@@ -130,7 +129,7 @@ public class WelcomeActivity extends AppCompatActivity {
                             .duration(2000)
                             .playOn(findViewById(R.id.imageView13));
                 }
-                if(millisUntilFinished/1000==3){
+                if(millisUntilFinished/1000==4){
 
 
                     payText.setVisibility(View.VISIBLE);
@@ -138,13 +137,13 @@ public class WelcomeActivity extends AppCompatActivity {
                             .duration(1000)
                             .playOn(findViewById(R.id.pay));
                 }
-                if(millisUntilFinished/1000==2){
+                if(millisUntilFinished/1000==3){
                     tourButton.setVisibility(View.VISIBLE);
                     YoYo.with(Techniques.Flash)
                             .duration(1000)
                             .playOn(findViewById(R.id.button2));
                 }
-                if(millisUntilFinished/1000==1){
+                if(millisUntilFinished/1000==2){
                     skipButton.setVisibility(View.VISIBLE);
                     YoYo.with(Techniques.Flash)
                             .duration(1000)

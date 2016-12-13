@@ -11,15 +11,21 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/imageViewProfile"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_weight="0.32"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/iconuserdefault"
+        app:civ_border_width="1dp"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:src="@drawable/shoppingcart"
-        android:layout_gravity="center" />
+        app:civ_border_color="#FFFFFF"/>
 
     <TextView
+        android:id="@+id/userProfileName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
@@ -28,7 +34,7 @@
         android:gravity="center" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/userProfileEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="aulakh161@gmail.com"

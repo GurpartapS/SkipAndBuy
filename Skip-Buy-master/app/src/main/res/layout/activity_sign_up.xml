@@ -39,7 +39,7 @@
                 android:id="@+id/imageView3"
                 android:src="@drawable/shoppingcart"
                 android:layout_gravity="center"
-                android:layout_marginTop="40dp" />
+                android:layout_marginTop="15dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -47,11 +47,11 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Skip &amp; Buy"
                 android:id="@+id/textView7"
-                android:textSize="40dp"
+                android:textSize="30dp"
                 android:textStyle="bold"
                 android:textColor="#ffffff"
                 android:paddingLeft="0dp"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
                 />
             <EditText
@@ -60,7 +60,7 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/nameText"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="30dp"
                 android:textCursorDrawable="@null"
                 android:hint="Name"
                 android:textColorHint="@color/editTextField"

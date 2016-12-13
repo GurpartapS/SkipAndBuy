@@ -43,12 +43,12 @@
                     android:scrollIndicators="none">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
                         android:id="@+id/imageView2"
                         android:layout_gravity="center"
                         android:src="@drawable/shoppingcart"
-                        android:layout_marginTop="60dp" />
+                        android:layout_marginTop="30dp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -59,8 +59,9 @@
                         android:textStyle="bold"
                         android:textColor="#ffffff"
                         android:textSize="40dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:gravity="center" />
+
 
                     <EditText
                         android:layout_width="match_parent"
@@ -98,7 +99,7 @@
                         android:layout_width="match_parent"
                         android:text="LOGIN"
                         android:id="@+id/loginButton"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginTop="30dp"
                         android:textColor="@color/colorAccent"
                         android:background="#ffffff"
                         android:layout_marginLeft="20dp"
@@ -121,28 +122,21 @@
                         android:textStyle="bold|italic"
                         android:onClick="signUpActivity"/>
 
-                    <TextView
-                        android:text="OR"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView2"
-                        android:layout_marginTop="10dp"
-                        android:textAlignment="center"
-                        android:textStyle="normal|bold"
-                        tools:text="OR"
-                        android:textColor="#ffffff" />
+
 
                     <Button
                         android:layout_width="match_parent"
                         android:text="SIGN UP WITH FACEBOOK"
-                        android:id="@+id/loginButton"
-                        android:layout_marginTop="15dp"
+                        android:id="@+id/facebookLoginButton"
+                        android:layout_marginTop="30dp"
                         android:textColor="#ffffff"
                         android:background="#3b5998"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_height="40dp"
                         android:textSize="16sp" />
+
+
 
 
                     <Button
@@ -159,6 +153,7 @@
 
 
                 </LinearLayout>
+
             </ScrollView>
 
         </RelativeLayout>

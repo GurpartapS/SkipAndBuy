@@ -133,6 +133,7 @@
                     android:layout_below="@id/paymentTime"
                     android:background="@color/colorAccent"
                     android:textColor="#ffffff"
+                    android:onClick="showOrderHistory"
                     android:textStyle="normal|bold"
                     android:layout_height="40dp" />
 

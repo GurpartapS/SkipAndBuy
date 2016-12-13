@@ -19,7 +19,7 @@
                 android:text="ITEMS"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/subTotal"
+                android:id="@+id/itemsLabel"
                 android:textStyle="normal|bold"
                 android:layout_marginTop="30sp"
                 android:textSize="15dp"

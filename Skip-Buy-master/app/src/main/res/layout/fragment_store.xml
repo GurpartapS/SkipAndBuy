@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.gurpartap.skip_and_buy.Controller.StoreFragment"
+    tools:context="com.example.gurpartap.skip_and_buy_admin.Controller.StoreFragment"
     android:background="#ffffff">
 
     <!-- TODO: Update blank fragment layout -->
@@ -24,7 +24,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="0dp">
 
             <ImageView
                 app:srcCompat="@drawable/store"
@@ -147,10 +147,10 @@
             android:layout_marginTop="0dp">
 
             <Button
-                android:text="SHOP NOW"
+                android:text="SCAN ITEM"
                 android:layout_width="match_parent"
                 android:id="@+id/shopNowButton"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginLeft="20dp"
                 android:background="@color/colorAccent"
                 android:textColor="#ffffff"
@@ -158,23 +158,43 @@
                 android:onClick="scanItemActivity"
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
-                android:layout_height="40dp" />
+                android:layout_height="35dp" />
+
+            <Button
+                android:text="TAKE PICTURE"
+                android:layout_width="match_parent"
+                android:id="@+id/takePictureButton"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/colorAccent"
+                android:textColor="#ffffff"
+                android:textStyle="normal|bold"
+                android:onClick="takePictureActivity"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_height="35dp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-55dp">
 
             <Button
                 android:text="VIEW FLYER"
                 android:id="@+id/viewFlyerButton"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="0dp"
                 android:layout_marginRight="20dp"
                 android:onClick="viewStoreFlyer"
-                android:background="@color/colorAccent"
+                android:background="#7db701"
                 android:textColor="#ffffff"
                 android:textStyle="normal|bold"
-                android:layout_height="40dp" />
+                android:layout_height="35dp" />
         </LinearLayout>
-
     </LinearLayout>
 
 </FrameLayout>
