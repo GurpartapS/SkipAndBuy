@@ -3,6 +3,12 @@ package com.example.gurpartap.skip_and_buy.Model;
 /**
  * Created by GURPARTAP on 2016-09-16.
  */
+
+/*
+    *   OrderHistoryItem maps to the database orderhistory item
+    *   It has information about the store and amount that user spent at that store
+*/
+
 public class OrderHistoryItem {
 
 

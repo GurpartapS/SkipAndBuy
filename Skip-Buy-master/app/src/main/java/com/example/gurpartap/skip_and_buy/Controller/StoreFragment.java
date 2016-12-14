@@ -22,6 +22,11 @@ import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 
+/*
+    *   StoreFragment has information abou the store name, location and information
+    *   StoreFragment also allows user to view flyer and scan item
+*/
+
 public class StoreFragment extends Fragment {
 
     private String storeName;

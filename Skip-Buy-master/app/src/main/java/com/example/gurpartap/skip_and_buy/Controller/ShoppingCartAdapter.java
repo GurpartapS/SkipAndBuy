@@ -30,6 +30,12 @@ import java.util.Date;
 /**
  * Created by GURPARTAP on 2016-09-16.
  */
+
+/*
+    * ShoppingCartAdapter is for plugging in the shopping cart
+    * items in the ShoppingCartFragment ListView
+*/
+
 public class ShoppingCartAdapter extends ArrayAdapter<ShoppingCartItem> {
 
     Context context;

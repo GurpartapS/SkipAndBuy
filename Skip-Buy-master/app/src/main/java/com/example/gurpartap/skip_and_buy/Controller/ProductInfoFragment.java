@@ -23,6 +23,11 @@ import java.util.Random;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
+/*
+    *   ProductInfoFragment displays all the information related to the scanned product
+    *   ProductInfoFragment also provides functionality to the user to add product to the cart
+    *   It also allows user to go back to the store page so that user can scan another item
+*/
 
 public class ProductInfoFragment extends Fragment {
 
@@ -42,50 +47,50 @@ public class ProductInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        rootView= inflater.inflate(R.layout.fragment_product_info, container, false);
+        rootView = inflater.inflate(R.layout.fragment_product_info, container, false);
 
         setProduct(rootView);
 
-        TextView productDetail=(TextView)rootView.findViewById(R.id.productDescription);
+        TextView productDetail = (TextView) rootView.findViewById(R.id.productDescription);
         productDetail.setText(productDescription);
 
-        TextView productBrandName=(TextView)rootView.findViewById(R.id.productName);
+        TextView productBrandName = (TextView) rootView.findViewById(R.id.productName);
         productBrandName.setText(productName);
 
-        TextView productWeightField=(TextView)rootView.findViewById(R.id.productWeight);
+        TextView productWeightField = (TextView) rootView.findViewById(R.id.productWeight);
         productWeightField.setText(productWeight);
 
-        TextView productTotalPrice=(TextView)rootView.findViewById(R.id.productPrice);
-        productTotalPrice.setText("$"+productPrice+" / Pc.");
+        TextView productTotalPrice = (TextView) rootView.findViewById(R.id.productPrice);
+        productTotalPrice.setText("$" + productPrice + " / Pc.");
 
-        TextView productBrandField=(TextView)rootView.findViewById(R.id.productBrand);
-        productBrandField.setText("Brand:  "+productBrand);
+        TextView productBrandField = (TextView) rootView.findViewById(R.id.productBrand);
+        productBrandField.setText("Brand:  " + productBrand);
 
-        TextView productReviewsField=(TextView)rootView.findViewById(R.id.productReviews);
-        productReviewsField.setText(productReviews+" Reviews");
+        TextView productReviewsField = (TextView) rootView.findViewById(R.id.productReviews);
+        productReviewsField.setText(productReviews + " Reviews");
 
-        TextView productWeightSpec=(TextView)rootView.findViewById(R.id.productWeightSpec);
-        productWeightSpec.setText("Weight:  "+productWeight);
+        TextView productWeightSpec = (TextView) rootView.findViewById(R.id.productWeightSpec);
+        productWeightSpec.setText("Weight:  " + productWeight);
 
-        productQuantity=(EditText)rootView.findViewById(R.id.productQuantity);
+        productQuantity = (EditText) rootView.findViewById(R.id.productQuantity);
 
         //productQuantity.setEnabled(false);
 
-        TextView productSKUField=(TextView)rootView.findViewById(R.id.productSKUSpec);
-        productSKUField.setText("SKU:  "+productSKU);
+        TextView productSKUField = (TextView) rootView.findViewById(R.id.productSKUSpec);
+        productSKUField.setText("SKU:  " + productSKU);
 
-        TextView productUPCField=(TextView)rootView.findViewById(R.id.productUPCSpec);
-        productUPCField.setText("UPC:  "+productUPC);
+        TextView productUPCField = (TextView) rootView.findViewById(R.id.productUPCSpec);
+        productUPCField.setText("UPC:  " + productUPC);
 
-        Button scanAnother=(Button)rootView.findViewById(R.id.scanAnotherItemButton);
-        Button addItemToCart=(Button)rootView.findViewById(R.id.addItemToCartButton);
+        Button scanAnother = (Button) rootView.findViewById(R.id.scanAnotherItemButton);
+        Button addItemToCart = (Button) rootView.findViewById(R.id.addItemToCartButton);
 
         Random rand = new Random();
 
-        int  n = rand.nextInt(10000) + 1;
+        int n = rand.nextInt(10000) + 1;
 
-        String SHOWCASE_ID=Integer.toString(n);
-        productImageView=(ImageView)rootView.findViewById(R.id.imageView7);
+        String SHOWCASE_ID = Integer.toString(n);
+        productImageView = (ImageView) rootView.findViewById(R.id.imageView7);
 
         productImageView.setImageResource(productImage);
 
@@ -103,21 +108,21 @@ public class ProductInfoFragment extends Fragment {
                 "Scan another item by going back to the scanner and discard this item", "GOT IT");
 
         sequence.addSequenceItem(addItemToCart,
-                "Use this button to add this product and navigate to shopping cart","GOT IT");
+                "Use this button to add this product and navigate to shopping cart", "GOT IT");
 
-        if(MainActivity.tourDone==false){
+        if (MainActivity.tourDone == false) {
 
             sequence.start();
-            MainActivity.tourDone=true;
+            MainActivity.tourDone = true;
         }
 
 
         return rootView;
     }
 
-    public void setProduct(View rootView){
+    public void setProduct(View rootView) {
 
-        String storeId="";
+        String storeId = "";
 
         try {
             SqlConnection connn = new SqlConnection();
@@ -129,18 +134,17 @@ public class ProductInfoFragment extends Fragment {
 
                 PreparedStatement getStoreInfo = connect.prepareStatement("Select storeId from Store where storeAddress=?");
 
-                getStoreInfo.setString(1,MainActivity.location);
+                getStoreInfo.setString(1, MainActivity.location);
 
-                System.out.println("THE STORE LOCATION IS:"+MainActivity.location);
+                System.out.println("THE STORE LOCATION IS:" + MainActivity.location);
 
                 ResultSet verifyStoreResultset = getStoreInfo.executeQuery();
 
-                if(verifyStoreResultset.next()){
+                if (verifyStoreResultset.next()) {
                     System.out.println("PRINTING THE RESULTS OF USER ACCOUNT QUERY1");
-                    storeId=verifyStoreResultset.getString("storeId");
+                    storeId = verifyStoreResultset.getString("storeId");
                 }
-            }
-            else {
+            } else {
                 Snackbar.make(rootView, "Connection Problem", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -149,90 +153,71 @@ public class ProductInfoFragment extends Fragment {
 
                 PreparedStatement getProductInfo = connect1.prepareStatement("Select * from products where Product_ID=? and Store_Id=?");
 
-                getProductInfo.setString(1,MainActivity.scannedProductCode);
-                getProductInfo.setString(2,storeId);
+                getProductInfo.setString(1, MainActivity.scannedProductCode);
+                getProductInfo.setString(2, storeId);
 
-                System.out.println("THE PRODUCT ID IS:"+MainActivity.scannedProductCode);
-                System.out.println("THE STORE ID IS:"+storeId);
+                System.out.println("THE PRODUCT ID IS:" + MainActivity.scannedProductCode);
+                System.out.println("THE STORE ID IS:" + storeId);
 
                 ResultSet verifyProductResultset = getProductInfo.executeQuery();
 
-                if(verifyProductResultset.next()){
+                if (verifyProductResultset.next()) {
                     System.out.println("FOUND THE PRODUCT");
-                    productDescription=verifyProductResultset.getString("Product_Detail");
-                    productPrice=verifyProductResultset.getString("Product_Price");
-                    productName=verifyProductResultset.getString("Product_Name");
-                    productBrand=verifyProductResultset.getString("Product_Brand");
-                    productSKU=verifyProductResultset.getString("Product_SKU");
-                    productWeight=verifyProductResultset.getString("Product_Weight");
-                    productReviews=verifyProductResultset.getString("Product_Reviews");
-                    productUPC=MainActivity.scannedProductCode;
-                    productImage=R.drawable.ketchup;
-                    if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Excel")){
-                        productImage=R.drawable.excelchew;
-                    }
-
-                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Sauce")){
-                        productImage=R.drawable.sauce;
-                    }
-                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Hair Spray")){
-                        productImage=R.drawable.tresemme;
-                    }
-                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Organics")){
-                        productImage=R.drawable.organics;
-                    }
-                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Knorr Soup")){
-                        productImage=R.drawable.knorr;
-                    }
-
-                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Honey")){
-                        productImage=R.drawable.honey;
-                    }
-                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Croissants")){
-                        productImage=R.drawable.crescent;
-                    }
-                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Milk")){
-                        productImage=R.drawable.milk;
-                    }
-                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Veg Soup")){
-                        productImage=R.drawable.campbell;
-                    }
-                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Coffee")){
-                        productImage=R.drawable.coffee;
-                    }
-                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Beans")){
-                        productImage=R.drawable.beans;
-                    }
-                    else if(verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Apples")){
-                                productImage=R.drawable.apple;
-                            }
-
-                    else{
+                    productDescription = verifyProductResultset.getString("Product_Detail");
+                    productPrice = verifyProductResultset.getString("Product_Price");
+                    productName = verifyProductResultset.getString("Product_Name");
+                    productBrand = verifyProductResultset.getString("Product_Brand");
+                    productSKU = verifyProductResultset.getString("Product_SKU");
+                    productWeight = verifyProductResultset.getString("Product_Weight");
+                    productReviews = verifyProductResultset.getString("Product_Reviews");
+                    productUPC = MainActivity.scannedProductCode;
+                    productImage = R.drawable.ketchup;
+                    if (verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Excel")) {
+                        productImage = R.drawable.excelchew;
+                    } else if (verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Sauce")) {
+                        productImage = R.drawable.sauce;
+                    } else if (verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Hair Spray")) {
+                        productImage = R.drawable.tresemme;
+                    } else if (verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Organics")) {
+                        productImage = R.drawable.organics;
+                    } else if (verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Knorr Soup")) {
+                        productImage = R.drawable.knorr;
+                    } else if (verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Honey")) {
+                        productImage = R.drawable.honey;
+                    } else if (verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Croissants")) {
+                        productImage = R.drawable.crescent;
+                    } else if (verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Milk")) {
+                        productImage = R.drawable.milk;
+                    } else if (verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Veg Soup")) {
+                        productImage = R.drawable.campbell;
+                    } else if (verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Coffee")) {
+                        productImage = R.drawable.coffee;
+                    } else if (verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Beans")) {
+                        productImage = R.drawable.beans;
+                    } else if (verifyProductResultset.getString("Product_Name").equalsIgnoreCase("Apples")) {
+                        productImage = R.drawable.apple;
+                    } else {
 
                     }
 
-                }
-                else{
+                } else {
                     System.out.println("UNABLE TO FIND THE PRODUCT");
-                    ((MainActivity)getActivity()).productNotFound();
+                    ((MainActivity) getActivity()).productNotFound();
                 }
 
-            }
-            else {
+            } else {
                 Snackbar.make(rootView, "Connection Problem", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
 
         }
     }
 
 
-    public void saveShoppingCart(String productQuantityInCart){
-        String storeId="";
-        String userId="";
-
+    public void saveShoppingCart(String productQuantityInCart) {
+        String storeId = "";
+        String userId = "";
 
 
         try {
@@ -246,31 +231,30 @@ public class ProductInfoFragment extends Fragment {
 
                 PreparedStatement getStoreInfo = connect.prepareStatement("Select storeId from Store where storeAddress=?");
 
-                getStoreInfo.setString(1,MainActivity.location);
+                getStoreInfo.setString(1, MainActivity.location);
 
                 ResultSet verifyStoreResultset = getStoreInfo.executeQuery();
 
-                if(verifyStoreResultset.next()){
-                    storeId=verifyStoreResultset.getString("storeId");
+                if (verifyStoreResultset.next()) {
+                    storeId = verifyStoreResultset.getString("storeId");
                 }
-            }
-            else {
+            } else {
 
             }
             if (connect1 != null) {
 
                 PreparedStatement getProductInfo = connect1.prepareStatement("Select * from products where Product_ID=? and Store_Id=?");
 
-                getProductInfo.setString(1,MainActivity.scannedProductCode);
-                getProductInfo.setString(2,storeId);
+                getProductInfo.setString(1, MainActivity.scannedProductCode);
+                getProductInfo.setString(2, storeId);
 
-                System.out.println("THE PRODUCT ID IS:"+MainActivity.scannedProductCode);
-                System.out.println("THE STORE ID IS:"+storeId);
+                System.out.println("THE PRODUCT ID IS:" + MainActivity.scannedProductCode);
+                System.out.println("THE STORE ID IS:" + storeId);
 
                 ResultSet verifyProductResultset = getProductInfo.executeQuery();
 
-                if(verifyProductResultset.next()){
-                    productPrice=verifyProductResultset.getString("Product_Price");
+                if (verifyProductResultset.next()) {
+                    productPrice = verifyProductResultset.getString("Product_Price");
 
                 }
             }
@@ -283,11 +267,10 @@ public class ProductInfoFragment extends Fragment {
 
                 ResultSet verifyStoreResultset = getStoreInfo.executeQuery();
 
-                if(verifyStoreResultset.next()){
-                    userId=verifyStoreResultset.getString("customerId");
+                if (verifyStoreResultset.next()) {
+                    userId = verifyStoreResultset.getString("customerId");
                 }
-            }
-            else {
+            } else {
 
             }
 
@@ -296,21 +279,19 @@ public class ProductInfoFragment extends Fragment {
                 PreparedStatement getProductInfo = connect1.prepareStatement("Insert into cart values(?,?,?,?,?)");
 
 
-                getProductInfo.setString(1,userId);
-                getProductInfo.setString(2,MainActivity.scannedProductCode);
-                getProductInfo.setString(3,productQuantityInCart);
-                getProductInfo.setString(4,Integer.toString(Integer.parseInt(productPrice)*Integer.parseInt(productQuantityInCart)));
-                getProductInfo.setString(5,storeId);
+                getProductInfo.setString(1, userId);
+                getProductInfo.setString(2, MainActivity.scannedProductCode);
+                getProductInfo.setString(3, productQuantityInCart);
+                getProductInfo.setString(4, Integer.toString(Integer.parseInt(productPrice) * Integer.parseInt(productQuantityInCart)));
+                getProductInfo.setString(5, storeId);
 
                 getProductInfo.executeUpdate();
 
-            }
-            else {
+            } else {
 
             }
-        }
-        catch(Exception e){
-                System.out.println("EXCEPTION OCCURED -: "+e.getMessage());
+        } catch (Exception e) {
+            System.out.println("EXCEPTION OCCURED -: " + e.getMessage());
         }
     }
 
